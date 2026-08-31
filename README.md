@@ -55,11 +55,26 @@ LEDをチカチカさせるところから、センサーとモーターを組�
 - **PWM が使えるピンは限られる** … D2・D5・D10・D17・A0〜A4・A7 のみ
 - **Flash 16KB / RAM 2KB** … 大きなライブラリは載らない。教材はライブラリなしで組み立てている
 
+## 参考リンク
+
+- **[UIAPduino Pro Micro CH32V003 V1.4 — 公式ページ](https://www.uiap.jp/uiapduino/pro-micro/ch32v003/v1dot4)**
+  … 仕様・ピン配置・書き込み手順の**一次情報**。教材に書く事実は必ずここで裏を取ること
+- [同ページ：ch32fun 開発環境](https://www.uiap.jp/uiapduino/pro-micro/ch32v003/v1dot4#with-ch32fun-development-environment)
+  … Arduino IDE を使わないコマンドライン開発（発展）
+- [Arduino IDE のダウンロード](https://www.arduino.cc/en/software)
+- [スイッチサイエンス — ボードの購入](https://www.switch-science.com/products/9914)
+- ボードマネージャURL：
+  `https://github.com/YuukiUmeta-UIAP/board_manager_files/raw/main/package_uiap.jp_index.json`
+
 ## ライセンス
 
 文章・レイアウト・プログラムは **MIT ライセンス**（[docs/LICENSE.txt](docs/LICENSE.txt)）で公開しています。
 自由に利用・改変・再配布できますが、作成者は一切の責任を負いません（無保証）。
 
 ※ 画面キャプチャ・イラスト・写真などの第三者素材は MIT の対象外で、各提供元の利用規約に従います。
+
+※ **ピン配置図**（`content/x3_pinout/image/index/pinout.png` および `content/i1_about/image/index/pinout.png`）は
+**Yuuki U.** 氏の著作物で、**CC BY 4.0** で公開されているものです。
+再配布・改変の際は、作者名とライセンス（https://creativecommons.org/licenses/by/4.0/ ）の表示を残してください。
 
 Copyright © 2026 Taiki Ishii

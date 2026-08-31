@@ -47,8 +47,8 @@ wip: true
 :::
 
 ```cpp 正転と逆転をくりかえす
-const int AIN1 = 5;    // どちらも PWM が使えるピン
-const int AIN2 = 10;   // （D7・D8・D9 は PWM 不可）
+const int AIN1 = 5;   // どちらも PWM が使えるピン
+const int AIN2 = 6;   // （PWM 可は 0・2・5・6・12 の5本だけ）
 
 void setup() {
   pinMode(AIN1, OUTPUT);
