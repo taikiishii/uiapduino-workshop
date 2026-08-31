@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>③ LEDの明るさを変えよう — UIAPduino ワークショップ</title>
+<link rel="stylesheet" href="../assets/deck.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
+  <span class="title">③ LEDの明るさを変えよう</span>
+  <span class="spacer"></span>
+  <button id="btn-present">▶ 発表モード</button>
+  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
+</div>
+
+<div class="deck" id="deck">
+  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
+</div>
+
+<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
+<script type="text/markdown" id="deck-source">
+{cover}
+{qr: qr.svg}
+# ③ LEDの明るさを変えよう
+
+0 と 1 のあいだをつくる（PWM）
+
+*UIAPduino 体験ワークショップ*
+
+---
+
+# なにをするの？
+
+:::
+
+- `analogWrite` で明るさを **0〜255** で指定する
+- じつは**ものすごく速く点滅**していて、目には明るさに見えている（PWM）
+- ⚠ PWM が使えるピンは決まっている（**D7・D8・D9 は使えない**）
+
+:::
+
+> 📷 ここに写真やスクリーンショットを貼る（VS Code で画像を貼り付けると image/index/ に保存されます）
+
+---
+
+# プログラム
+
+:::
+
+1. Arduino IDE に下のプログラムを入力する
+2. **RESETを押しながら**USBを挿して、書き込む
+3. 書き込めたら **RESETをもう1回押す**
+
+> 💪 数字を変えると、どう変わるかためしてみよう。
+
+:::
+
+```cpp 明るさを3段階で変える
+const int LED = 5;   // PWMが使えるピン（D5 = PC3）
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  analogWriteResolution(8);   // 明るさを 0〜255 で指定する
+}
+
+void loop() {
+  analogWrite(LED, 0);    delay(500);   // 消灯
+  analogWrite(LED, 64);   delay(500);   // ちょっと明るい
+  analogWrite(LED, 255);  delay(500);   // いちばん明るい
+}
+```
+</script>
+
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>① 光センサーで暗くなったら光る — UIAPduino ワークショップ</title>
+<link rel="stylesheet" href="../assets/deck.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
+  <span class="title">① 光センサーで暗くなったら光る</span>
+  <span class="spacer"></span>
+  <button id="btn-present">▶ 発表モード</button>
+  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
+</div>
+
+<div class="deck" id="deck">
+  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
+</div>
+
+<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
+<script type="text/markdown" id="deck-source">
+{cover}
+{qr: qr.svg}
+# ① 光センサーで暗くなったら光る
+
+くらさを感じて自動で光る
+
+*UIAPduino 体験ワークショップ*
+
+---
+
+# なにをするの？
+
+:::
+
+- **CdS（光センサー）** は、明るさによって抵抗が変わる部品
+- 抵抗と組み合わせて `analogRead` で明るさを数字にする
+- しきい値より暗くなったらLEDをつける ＝ **自動ライト**
+
+:::
+
+> 📷 ここに写真やスクリーンショットを貼る（VS Code で画像を貼り付けると image/index/ に保存されます）
+
+---
+
+# プログラム
+
+:::
+
+1. Arduino IDE に下のプログラムを入力する
+2. **RESETを押しながら**USBを挿して、書き込む
+3. 書き込めたら **RESETをもう1回押す**
+
+> 💪 数字を変えると、どう変わるかためしてみよう。
+
+:::
+
+```cpp 暗くなったら光る
+const int CDS = A2;   // 光センサー（CdS + 10kΩ の分圧）
+const int LED = 5;
+
+void setup() {
+  pinMode(LED, OUTPUT);
+}
+
+void loop() {
+  int light = analogRead(CDS);
+  if (light < 300) {              // 暗くなったら
+    digitalWrite(LED, HIGH);
+  } else {
+    digitalWrite(LED, LOW);
+  }
+  delay(50);
+}
+```
+</script>
+
+<script src="../assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>④ つまみで明るさを変えよう — UIAPduino ワークショップ</title>
+<link rel="stylesheet" href="../assets/deck.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
+  <span class="title">④ つまみで明るさを変えよう</span>
+  <span class="spacer"></span>
+  <button id="btn-present">▶ 発表モード</button>
+  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
+</div>
+
+<div class="deck" id="deck">
+  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
+</div>
+
+<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
+<script type="text/markdown" id="deck-source">
+{cover}
+{qr: qr.svg}
+# ④ つまみで明るさを変えよう
+
+アナログの値を読む
+
+*UIAPduino 体験ワークショップ*
+
+---
+
+# なにをするの？
+
+:::
+
+- `analogRead` で **0〜1023** の値を読む
+- デジタル（0か1）とちがって、アナログは**とちゅうの値がある**
+- 読んだ値をそのまま明るさにすると、つまみでLEDを調節できる
+
+:::
+
+> 📷 ここに写真やスクリーンショットを貼る（VS Code で画像を貼り付けると image/index/ に保存されます）
+
+---
+
+# プログラム
+
+:::
+
+1. Arduino IDE に下のプログラムを入力する
+2. **RESETを押しながら**USBを挿して、書き込む
+3. 書き込めたら **RESETをもう1回押す**
+
+> 💪 数字を変えると、どう変わるかためしてみよう。
+
+:::
+
+```cpp つまみで明るさを変える
+const int VR  = A2;   // 可変抵抗（つまみ）… A2 = PC4
+const int LED = 5;
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  analogWriteResolution(8);
+}
+
+void loop() {
+  int value = analogRead(VR);        // 0〜1023（10bit）
+  analogWrite(LED, value / 4);       // 0〜255 に変える
+  delay(10);
+}
+```
+</script>
+
+<script src="../assets/deck.js"></script>
+</body>
+</html>

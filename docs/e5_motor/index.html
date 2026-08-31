@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>⑤ モータードライバでDCモーター — UIAPduino ワークショップ</title>
+<link rel="stylesheet" href="../assets/deck.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
+  <span class="title">⑤ モータードライバでDCモーター</span>
+  <span class="spacer"></span>
+  <button id="btn-present">▶ 発表モード</button>
+  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
+</div>
+
+<div class="deck" id="deck">
+  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
+</div>
+
+<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
+<script type="text/markdown" id="deck-source">
+{cover}
+{qr: qr.svg}
+# ⑤ モータードライバでDCモーター
+
+回す・逆に回す・速さを変える
+
+*UIAPduino 体験ワークショップ*
+
+---
+
+# なにをするの？
+
+:::
+
+- モーターは電気をたくさん使うので、**マイコンに直接つないではいけない**
+- **モータードライバ**という部品にお願いして回してもらう
+- 2本のピンの組み合わせで、**正転・逆転・停止**が決まる
+
+:::
+
+> 📷 ここに写真やスクリーンショットを貼る（VS Code で画像を貼り付けると image/index/ に保存されます）
+
+---
+
+# プログラム
+
+:::
+
+1. Arduino IDE に下のプログラムを入力する
+2. **RESETを押しながら**USBを挿して、書き込む
+3. 書き込めたら **RESETをもう1回押す**
+
+> 💪 数字を変えると、どう変わるかためしてみよう。
+
+:::
+
+```cpp 正転と逆転をくりかえす
+const int AIN1 = 5;    // どちらも PWM が使えるピン
+const int AIN2 = 10;   // （D7・D8・D9 は PWM 不可）
+
+void setup() {
+  pinMode(AIN1, OUTPUT);
+  pinMode(AIN2, OUTPUT);
+  analogWriteResolution(8);
+}
+
+void loop() {
+  analogWrite(AIN1, 200);  digitalWrite(AIN2, LOW);   // 正転
+  delay(2000);
+  digitalWrite(AIN1, LOW); analogWrite(AIN2, 200);    // 逆転
+  delay(2000);
+  digitalWrite(AIN1, LOW); digitalWrite(AIN2, LOW);   // 停止
+  delay(1000);
+}
+```
+</script>
+
+<script src="../assets/deck.js"></script>
+</body>
+</html>

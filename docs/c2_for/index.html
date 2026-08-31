@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>② くりかえし（for） — UIAPduino ワークショップ</title>
+<link rel="stylesheet" href="../assets/deck.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
+  <span class="title">② くりかえし（for）</span>
+  <span class="spacer"></span>
+  <button id="btn-present">▶ 発表モード</button>
+  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
+</div>
+
+<div class="deck" id="deck">
+  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
+</div>
+
+<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
+<script type="text/markdown" id="deck-source">
+{cover}
+{qr: qr.svg}
+# ② くりかえし（for）
+
+同じ命令を何回もくりかえす
+
+*UIAPduino 体験ワークショップ*
+
+---
+
+# なにをするの？
+
+:::
+
+- 明るさを 0 から 255 まで変えるのに、**命令を256回書くのは大変**
+- `for` を使うと **1回書くだけ**でくりかえせる
+- くりかえしの回数をかぞえる変数のことを**カウンタ**というよ
+
+:::
+
+> 📷 ここに写真やスクリーンショットを貼る（VS Code で画像を貼り付けると image/index/ に保存されます）
+
+---
+
+# プログラム
+
+:::
+
+1. Arduino IDE に下のプログラムを入力する
+2. **RESETを押しながら**USBを挿して、書き込む
+3. 書き込めたら **RESETをもう1回押す**
+
+> 💪 数字を変えると、どう変わるかためしてみよう。
+
+:::
+
+```cpp だんだん明るく・だんだん暗く
+const int LED = 5;
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  analogWriteResolution(8);
+}
+
+void loop() {
+  for (int v = 0; v <= 255; v++) {   // だんだん明るく
+    analogWrite(LED, v);
+    delay(5);
+  }
+  for (int v = 255; v >= 0; v--) {   // だんだん暗く
+    analogWrite(LED, v);
+    delay(5);
+  }
+}
+```
+</script>
+
+<script src="../assets/deck.js"></script>
+</body>
+</html>
