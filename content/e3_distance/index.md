@@ -46,22 +46,16 @@ wip: true
 
 :::
 
-```cpp 近づいたらLEDが光る
-const int TRIG = 5;
-const int ECHO = 7;
-const int LED  = 8;
-
-void setup() {
-  pinMode(TRIG, OUTPUT);
-  pinMode(ECHO, INPUT);
-  pinMode(LED, OUTPUT);
-}
-
-void loop() {
+```cpp きょりをはかる
+int kyori() {                    // きょりを cm ではかる
   digitalWrite(TRIG, HIGH); delayMicroseconds(10); digitalWrite(TRIG, LOW);
-  long t = pulseIn(ECHO, HIGH);      // はね返るまでの時間
-  long cm = t / 58;                  // 距離（cm）
-  digitalWrite(LED, cm < 20 ? HIGH : LOW);
-  delay(100);
+  int w = 0;
+  while (digitalRead(ECHO) == LOW) { if (++w > 600) return 999; }
+  int n = 0;
+  while (digitalRead(ECHO) == HIGH && n < 600) {
+    delayMicroseconds(50);       // 音が 1cm 往復する時間
+    n++;
+  }
+  return n - 2;                  // 数えた回数 ＝ ほぼ cm
 }
 ```
