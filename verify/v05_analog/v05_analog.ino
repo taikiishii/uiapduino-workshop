@@ -26,7 +26,7 @@
  *   - まったく変わらない                                     → そのピンでは analogRead が使えない
  */
 
-#define TEST_PIN A2   // ← A0 / A1 / A2 / A3 / A5 / A6 と書きかえて試す（A4・A7 は無い）
+#define TEST_PIN A5   // ← A0 / A1 / A2 / A3 / A5 / A6 と書きかえて試す（A4・A7 は無い）
 
 const int LED = 2;    // 基板のオレンジLED（PWM 可）
 
