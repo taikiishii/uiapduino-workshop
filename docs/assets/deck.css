@@ -216,7 +216,14 @@ body { background: var(--page-bg); }
 }
 .callout.warn { background: var(--warn-bg); border-color: var(--warn-line); }
 .callout.challenge { background: #eef6ff; border-color: #5aa9e6; }
-.callout .hakase { flex: 0 0 auto; width: 7cqw; height: auto; align-self: flex-start; }
+/* 博士のアイコンは2種類。顔だけ版は顔が大きく写るので、
+   全身版と顔の大きさがそろうように幅を控えめにしてある。 */
+.callout .hakase { flex: 0 0 auto; height: auto; align-self: flex-start; }
+.callout .hakase.full { width: 7cqw; }   /* 622×800 → 高さ約 9.0cqw */
+.callout .hakase.face { width: 5.2cqw; align-self: center; } /* 388×355 → 高さ約 4.8cqw */
+/* 顔アイコンのときは本文も上下中央にする。
+   1～2行しかない吹き出しを上寄せにすると下に隔たりができて間延びして見えるため。 */
+.callout.icon-face { align-items: center; }
 .callout .callout-body { flex: 1; min-width: 0; }
 .callout .callout-body p { margin: 0; }
 
@@ -580,7 +587,8 @@ body.mode-present .present-bar { display: flex; }
     gap: 10px; padding: 11px 13px; margin: 12px 0 0;
     border-radius: 12px; font-size: .92em; line-height: 1.55;
   }
-  body:not(.mode-present) .callout .hakase { width: 40px; }
+  body:not(.mode-present) .callout .hakase.full { width: 40px; }
+  body:not(.mode-present) .callout .hakase.face { width: 34px; }
 
   /* ---- コードカード -------------------------------------------------------
      スマホでは container-type が無効（＝cqh が使えない）ので、

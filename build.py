@@ -12,7 +12,7 @@ build.py  --  content/ から docs/ の教材サイトを生成するビルド�
         ▼
     docs/<章>/index.html    +  docs/<章>/img/*  +  docs/<章>/qr.svg
                               （章フォルダ名の頭： i=導入編 / b=基本編 / c=制御編 / e=発展編 / x=付録）
-    docs/assets/            … deck.css / deck.js / hakase.png / qr.svg（共通部品）
+    docs/assets/            … deck.css / deck.js / hakase.png / hakase-face.png / qr.svg（共通部品）
     docs/index.html         … もくじ
 
 依存: segno（QR生成）, Pillow（画像縮小・任意）  →  pip install segno pillow

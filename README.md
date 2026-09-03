@@ -39,7 +39,7 @@ LEDをチカチカさせるところから、センサーとモーターを組�
 - `content/<章>/` … 各章の **`index.md`（編集するのはここ）** と `image/index/`（写真・画面キャプチャ）
 - `templates/`, `build.py` … 変換のしくみ
 - `docs/<章>/` … `build.py` が生成する `index.html` / `qr.svg` / `image/index/`（GitHub Pages 配信元。直接編集しない）
-- `docs/assets/` … 共通部品（`deck.css` / `deck.js` / `hakase.png` / `qr.svg`）
+- `docs/assets/` … 共通部品（`deck.css` / `deck.js` / `hakase.png` / `hakase-face.png` / `qr.svg`）
 - `verify/` … **実機検証用の Arduino スケッチ**（教材に書く値を実機で確かめるためのもの。公開教材ではない）
 - `CURRICULUM.md` … カリキュラム案・ピン配置・注意点・検証プラン
 
@@ -52,7 +52,8 @@ LEDをチカチカさせるところから、センサーとモーターを組�
 - **書き込み手順が独特** … RESETを押しながらUSBを挿す → 書き込み → 完了後もう一度RESET
 - **シリアルモニタが使えない** … `Serial.print` でのデバッグ前提にしない。値はLEDの明るさで見せる
 - **`analogWrite` の既定は 0〜4095** … `setup()` に `analogWriteResolution(8);` を入れて 0〜255 にそろえる
-- **PWM が使えるピンは限られる** … D2・D5・D10・D17・A0〜A4・A7 のみ
+- **PWM が使えるピンは限られる** … **0・2・5・6・12** のみ（実測で確認）
+- **アナログが読めるピンも限られる** … **A0・A1・A2・A3・A5** のみ。**A6 は図にあるが読めない**
 - **Flash 16KB / RAM 2KB** … 大きなライブラリは載らない。教材はライブラリなしで組み立てている
 
 ## 参考リンク
