@@ -39,7 +39,7 @@ analogWrite(LED, 1);
 analogWrite(LED, 2);
 ...
 ```
-> 📷 長々と続くプログラムのイメージ図
+![まじめに書くと256行にもなってしまう](image/index/long_program.png)
 
 ---
 
@@ -59,7 +59,7 @@ for (int v = 0; v <= 255; v++) {
   analogWrite(LED, v);
 }
 ```
-> 📷 v が 0→1→2… と変わるようすを描いた図
+![くりかえすたびに v の中身が変わっていく](image/index/counter.png)
 
 ---
 
@@ -98,7 +98,7 @@ Scratch を使ったことがあるなら、これを見たことがあるはず
 ```cpp
 for (int v = 0; v <= 255; v++)
 ```
-> 📷 3つの部分に色をつけて分けた図
+![かっこの中は「はじめ・条件・進め方」の3つ](image/index/for_parts.png)
 
 ---
 
@@ -171,7 +171,7 @@ void loop() {
 
 :::
 
-> 📷 中と外のちがいを色分けした図
+![くりかえされるのは { } の中だけ](image/index/inside_outside.png)
 
 ---
 

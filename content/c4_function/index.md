@@ -73,7 +73,7 @@ wip: 写真まち
 ```cpp
 const int leds[] = {5, 7, 8};
 ```
-> 📷 番号つきの箱がならんだ図
+![配列は番号のついた箱のならび。番号は0から](image/index/array_boxes.png)
 
 ---
 
@@ -94,7 +94,7 @@ for (int i = 0; i < 3; i++) {
   digitalWrite(leds[i], HIGH);
 }
 ```
-> 📷 i と leds[i] の対応を描いた図
+![i が 0→1→2 と変わると、leds[i] は 5→7→8 になる](image/index/array_for.png)
 
 ---
 
@@ -116,7 +116,7 @@ void hikaru(int pin) {
   digitalWrite(pin, LOW);
 }
 ```
-> 📷 関数を「道具箱にしまう」イメージ図
+![中身を関数にしまえば、呼ぶだけで使える](image/index/function_box.png)
 
 ---
 
