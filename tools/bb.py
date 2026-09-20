@@ -271,6 +271,17 @@ def ext_module(d, x, y, w, h, title, pins, pin_col=GOLD):
         out.append((px, py))
     return out
 
+def servo(d, x, y, w=250, h=150):
+    """サーボモーター（ボードの外に置く）。3本のリード線の付け根を返す"""
+    d.rounded_rectangle([x, y, x + w, y + h], radius=8, fill=(40, 44, 48),
+                        outline=(24, 26, 28), width=3)
+    d.rounded_rectangle([x + w * 0.28, y - 34, x + w * 0.72, y + 6], radius=6,
+                        fill=(56, 60, 64))
+    d.ellipse([x + w / 2 - 22, y - 56, x + w / 2 + 22, y - 12], fill=(230, 232, 234))
+    d.rectangle([x + w / 2 - 60, y - 40, x + w / 2 + 60, y - 28], fill=(230, 232, 234))
+    center(d, x + w / 2, y + h / 2 - 12, "サーボ", bold(22), WHITE)
+    return [(x, y + h * (0.3 + 0.2 * i)) for i in range(3)]
+
 def new(title, extra_w=0):
     im, d = canvas(W + extra_w, H)
     center(d, (W + extra_w) / 2, 20, title, bold(30), INK)
