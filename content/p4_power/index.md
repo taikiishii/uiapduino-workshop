@@ -70,7 +70,7 @@ desc: パソコンにつながなくても動く作品にしよう。えらび�
 
 :::
 
-![力の電気は電池から、合図だけボードから。GND はつなぐ](image/index/servo_power.png)
+![パソコンにつないだまま。モーターの電気だけ電池から](image/index/power_desk.png)
 
 ---
 
