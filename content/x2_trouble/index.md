@@ -8,7 +8,6 @@ color: c2
 nav_title: ② こまったときは
 card_title: こまったときは
 desc: 書きこめない・光らない・動かない。よくあるつまずきと、その直し方。
-wip: 写真まち
 ---
 
 {cover}

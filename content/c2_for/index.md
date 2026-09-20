@@ -8,7 +8,6 @@ color: c2
 nav_title: ② くりかえし（for）
 card_title: くりかえし（for）
 desc: 同じことを何回もくりかえす書き方。LEDをじわっと光らせよう。
-wip: 写真まち
 ---
 
 {cover}

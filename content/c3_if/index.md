@@ -8,7 +8,6 @@ color: c3
 nav_title: ③ もし〜なら（if / else）
 card_title: もし〜なら（if / else）
 desc: 条件によって動きを変えよう。「暗くなったら光る」が作れるようになる。
-wip: 写真まち
 ---
 
 {cover}
