@@ -72,7 +72,7 @@ wip: 写真まち
 
 :::
 
-![Vcc→5V、Trig→5番、Echo→7番、Gnd→GND](image/index/bb_sr04.png)
+![Trig は 5番ピンが下がわなので、18列で溝をこえて配線する](image/index/bb_sr04.png)
 
 ---
 

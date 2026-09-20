@@ -262,6 +262,30 @@ def cds(d, col, row):
                fill=(120, 110, 70), width=3)
     center(d, mx, my + 34, "CdS", bold(15), (120, 100, 40))
 
+def sr04(d, col, row, pins=("Vcc", "Trig", "Echo", "Gnd")):
+    """HC-SR04。端子4本を1行にさす。本体は端子の行から 溝がわへ のびる。"""
+    y = cy(row)
+    x1, x2 = cx(col) - 2.2 * PITCH, cx(col + 3) + 2.2 * PITCH
+    top = y + 18
+    d.rounded_rectangle([x1, top, x2, top + 168], radius=8,
+                        fill=(38, 64, 140), outline=(24, 44, 100), width=3)
+    for k in (0.26, 0.74):
+        mx = x1 + (x2 - x1) * k
+        my = top + 84
+        d.ellipse([mx - 56, my - 56, mx + 56, my + 56], fill=(176, 180, 184),
+                  outline=(120, 124, 128), width=3)
+        d.ellipse([mx - 40, my - 40, mx + 40, my + 40], fill=(150, 154, 158),
+                  outline=(120, 124, 128), width=2)
+        for r in (30, 20, 10):
+            d.ellipse([mx - r, my - r, mx + r, my + r], outline=(120, 124, 128), width=2)
+    center(d, (x1 + x2) / 2, top + 6, "HC-SR04", bold(19), WHITE)
+    for i, lab in enumerate(pins):
+        x = cx(col + i)
+        d.line([x, y, x, top], fill=(176, 180, 182), width=4)
+        d.ellipse([x - 10, y - 10, x + 10, y + 10], fill=GOLD,
+                  outline=(180, 150, 40), width=3)
+        center(d, x, y - 30, lab, bold(14), INK)
+
 def ext_module(d, x, y, w, h, title, pins, pin_col=GOLD):
     """ボードの外に置く部品（HC-SR04・サーボなど）。pins は端子名のならび。
     もどり値は 各端子の (x, y)。"""
