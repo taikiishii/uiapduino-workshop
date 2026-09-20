@@ -90,7 +90,7 @@ wip: 写真まち
 
 :::
 
-> 📷 モジュールの端子名を書きこんだ写真
+![VCC→3V3、MODE→GND、AIN1→5番、AIN2→6番](image/index/bb_drv8835.png)
 
 ---
 

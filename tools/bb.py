@@ -280,7 +280,41 @@ def servo(d, x, y, w=250, h=150):
     d.ellipse([x + w / 2 - 22, y - 56, x + w / 2 + 22, y - 12], fill=(230, 232, 234))
     d.rectangle([x + w / 2 - 60, y - 40, x + w / 2 + 60, y - 28], fill=(230, 232, 234))
     center(d, x + w / 2, y + h / 2 - 12, "サーボ", bold(22), WHITE)
-    return [(x, y + h * (0.3 + 0.2 * i)) for i in range(3)]
+    d.rounded_rectangle([x - 62, y + h * 0.28, x - 10, y + h * 0.76], radius=5,
+                        fill=(40, 42, 46), outline=(24, 26, 28), width=2)
+    center(d, x - 36, y + h * 0.78, "コネクタ", bold(13), INK)
+    return [(x - 62, y + h * (0.34 + 0.18 * i)) for i in range(3)]
+
+def dip(d, col, top_pins, bot_pins, title="DRV8835", fill=(28, 110, 70)):
+    """300mil の DIP モジュール。溝をまたいで f行・e行 に入る（6列ぶん）"""
+    n = len(top_pins)
+    x1, x2 = cx(col) - 20, cx(col + n - 1) + 20
+    y1, y2 = cy("f") - 24, cy("e") + 24
+    d.rounded_rectangle([x1, y1, x2, y2], radius=8, fill=fill,
+                        outline=(16, 80, 50), width=3)
+    center(d, (x1 + x2) / 2, (y1 + y2) / 2 - 12, title, bold(20), WHITE)
+    for i, lab in enumerate(top_pins):
+        x = cx(col + i)
+        d.ellipse([x - 9, cy("f") - 9, x + 9, cy("f") + 9], fill=GOLD)
+        d.line([x, cy("f") - 24, x, cy("g") + 14], fill=(150, 154, 158), width=2)
+        center(d, x, cy("g") - 6, lab, bold(11), (20, 90, 58))
+    for i, lab in enumerate(bot_pins):
+        x = cx(col + i)
+        d.ellipse([x - 9, cy("e") - 9, x + 9, cy("e") + 9], fill=GOLD)
+        d.line([x, cy("e") + 24, x, cy("d") - 12], fill=(150, 154, 158), width=2)
+        center(d, x, cy("d") - 6, lab, bold(11), (20, 90, 58))
+
+def motor(d, x, y, r=76):
+    d.ellipse([x - r, y - r, x + r, y + r], fill=(150, 154, 158),
+              outline=(110, 114, 118), width=3)
+    d.ellipse([x - 26, y - 26, x + 26, y + 26], fill=(90, 94, 98))
+    center(d, x, y + r + 12, "モーター", bold(19), INK)
+
+def battery(d, x, y, w=210, h=110):
+    d.rounded_rectangle([x, y, x + w, y + h], radius=8, fill=(232, 120, 40),
+                        outline=(180, 88, 24), width=3)
+    center(d, x + w / 2, y + h / 2 - 12, "電池 6V", bold(21), WHITE)
+    return (x, y + h * 0.32), (x, y + h * 0.68)
 
 def new(title, extra_w=0):
     im, d = canvas(W + extra_w, H)
