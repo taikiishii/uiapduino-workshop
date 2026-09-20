@@ -251,7 +251,7 @@ def to92(d, col, row, name="温度センサー"):
 def cds(d, col, row):
     """CdS（光センサー）。足は2本、となりあう2列。向きはない。"""
     x1, x2, y = cx(col), cx(col + 1), cy(row)
-    mx, my = (x1 + x2) / 2, y - 40
+    mx, my = (x1 + x2) / 2, y - 34
     for x in (x1, x2):
         d.line([x, y, mx, my], fill=(176, 180, 182), width=5)
     d.ellipse([mx - 28, my - 28, mx + 28, my + 28], fill=(236, 228, 190),
