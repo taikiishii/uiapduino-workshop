@@ -80,7 +80,7 @@ wip: 写真まち
 はね返りは**往復**するから、1cm あたり **58マイクロ秒**かかる計算だね。
 
 > つまり「**58マイクロ秒 ＝ 1cm**」。
-> だから 58マイクロ秒ずつ数えていけば、その回数がそのまま cm になる。
+> だから この時間ずつ数えていけば、その回数がそのまま cm になる。
 
 :::
 
@@ -96,7 +96,7 @@ wip: 写真まち
 
 1. `TRIG` に合図を送る
 2. `ECHO` が HIGH になるのを待つ
-3. HIGH のあいだ、50マイクロ秒ずつ数える
+3. HIGH のあいだ **50**マイクロ秒ずつ数える（測って合わせた数）
 4. 数えた回数が、ほぼ **cm**
 
 > `- 2` は、センサーが返事をするまでのぶんを引いているんだ。
@@ -104,13 +104,17 @@ wip: 写真まち
 :::
 
 ```cpp `e3_kyori` きょりをはかる
+const int TRIG = 9;
+const int ECHO = 7;
+const int LED  = 8;
+
 int kyori() {                    // きょりを cm ではかる
   digitalWrite(TRIG, HIGH); delayMicroseconds(10); digitalWrite(TRIG, LOW);
   int w = 0;
   while (digitalRead(ECHO) == LOW) { if (++w > 600) return 999; }
   int n = 0;
   while (digitalRead(ECHO) == HIGH && n < 600) {
-    delayMicroseconds(50);       // 音が 1cm 往復する時間
+    delayMicroseconds(50);       // 実測で 1回 ＝ 1cm
     n++;
   }
   return n - 2;                  // 数えた回数 ＝ ほぼ cm
@@ -135,10 +139,6 @@ int kyori() {                    // きょりを cm ではかる
 :::
 
 ```cpp `e3_kyori` につづけて書く
-const int TRIG = 9;
-const int ECHO = 7;
-const int LED  = 8;
-
 void setup() {
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT);

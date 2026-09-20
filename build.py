@@ -120,11 +120,37 @@ def copy_images(chapter_dir, body, out_dir):
         _copy_or_resize(src, dst)
 
 
+SLIDE_SEP  = re.compile(r"(\n[ \t]*-{3,}[ \t]*\n)")
+PHOTO_TODO = re.compile(r"^>[ \t]*\U0001F4F7.*$\n?", re.M)
+COL_SEP    = re.compile(r"^[ \t]*:::[ \t]*$\n?", re.M)
+
+
+def strip_photo_todos(body):
+    """`> 📷 …` は写真をあとで入れるための執筆メモ。読者には出さない。
+
+    deck.js は ⚠ と 💪 しか特別あつかいしないので、そのまま残すと
+    博士がメモを読みあげる吹き出しになってしまう。
+    メモを消したことで段組みの片方が空になったら、2段組をやめて全幅にする。
+    """
+    out = []
+    for slide in SLIDE_SEP.split(body):
+        if SLIDE_SEP.fullmatch(slide):
+            out.append(slide)
+            continue
+        slide = PHOTO_TODO.sub("", slide)
+        cols = COL_SEP.split(slide)
+        if len(cols) == 3 and not cols[2].strip():
+            slide = cols[0].rstrip() + "\n\n" + cols[1].strip() + "\n"
+        out.append(slide)
+    return "".join(out)
+
+
 def build_chapter(meta, body, chapter_dir, chapter_tpl):
     out_dir = os.path.join(DOCS, chapter_dir)
     os.makedirs(out_dir, exist_ok=True)
 
     copy_images(chapter_dir, body, out_dir)
+    body = strip_photo_todos(body)
 
     # 表紙に QR を自動挿入（最初の {cover} の直後）。QRは章フォルダ内 qr.svg
     if "{cover}" in body and "{qr:" not in body:
