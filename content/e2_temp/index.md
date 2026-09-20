@@ -132,7 +132,7 @@ float ondo() {
 
 :::
 
-```cpp 28℃をこえたら光る
+```cpp `e2_temp` 28℃をこえたら光る
 const int SENSOR = A2;
 const int LED    = 5;
 

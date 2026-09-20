@@ -135,7 +135,7 @@ for (int v = 0; v <= 255; v++)
 
 :::
 
-```cpp じわっと明るく、じわっと暗く
+```cpp `c2_fade` じわっと明るく、じわっと暗く
 const int LED = 5;
 
 void setup() {

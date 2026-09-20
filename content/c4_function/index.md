@@ -136,7 +136,7 @@ void hikaru(int pin) {
 
 :::
 
-```cpp 3つのLEDが流れる
+```cpp `c4_nagare` 3つのLEDが流れる
 const int leds[] = {5, 7, 8};
 
 void hikaru(int pin) {        // 1つ光らせる

@@ -109,7 +109,7 @@ wip: 写真まち
 
 :::
 
-```cpp スイッチでLEDをつける
+```cpp `b2_switch` スイッチでLEDをつける
 const int SW  = 3;
 const int LED = 5;
 

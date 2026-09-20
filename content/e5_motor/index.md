@@ -147,7 +147,7 @@ wip: 写真まち
 
 :::
 
-```cpp 正転と逆転をくりかえす
+```cpp `e5_motor` 正転と逆転をくりかえす
 const int AIN1 = 5;   // どちらも PWM が使えるピン
 const int AIN2 = 6;
 

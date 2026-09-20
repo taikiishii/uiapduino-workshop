@@ -90,7 +90,7 @@ CdS だけでは電圧にならないので、**もう1つ抵抗と組にする*
 
 :::
 
-```cpp まず明るさを見る
+```cpp `e1_check` まず明るさを見る
 const int CDS = A2;
 const int LED = 5;
 
@@ -122,7 +122,7 @@ void loop() {
 
 :::
 
-```cpp 暗くなったら光る
+```cpp `e1_light` 暗くなったら光る
 const int CDS = A2;
 const int LED = 5;
 

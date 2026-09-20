@@ -108,7 +108,7 @@ wip: 写真まち
 
 :::
 
-```cpp きょりをはかる
+```cpp `e3_kyori` きょりをはかる
 int kyori() {                    // きょりを cm ではかる
   digitalWrite(TRIG, HIGH); delayMicroseconds(10); digitalWrite(TRIG, LOW);
   int w = 0;
@@ -139,7 +139,7 @@ int kyori() {                    // きょりを cm ではかる
 
 :::
 
-```cpp 20cmより近づいたら光る
+```cpp `e3_kyori` につづけて書く
 const int TRIG = 5;
 const int ECHO = 7;
 const int LED  = 8;

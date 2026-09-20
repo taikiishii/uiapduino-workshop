@@ -105,7 +105,7 @@ wip: 写真まち
 
 :::
 
-```cpp ドレミを鳴らす
+```cpp `b5_doremi` ドレミを鳴らす
 const int BUZZER = 7;
 const int DO = 262, RE = 294, MI = 330;
 

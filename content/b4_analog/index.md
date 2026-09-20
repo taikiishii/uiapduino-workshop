@@ -110,7 +110,7 @@ wip: 写真まち
 
 :::
 
-```cpp つまみで明るさを変える
+```cpp `b4_volume` つまみで明るさを変える
 const int VR  = A2;   // つまみ
 const int LED = 5;
 
