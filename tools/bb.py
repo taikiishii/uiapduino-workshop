@@ -232,21 +232,22 @@ def lead(d, x1, y1, a, col, w=8):
     d.line(pts, fill=col, width=w, joint="curve")
     d.ellipse([x2 - 7, y2 - 7, x2 + 7, y2 + 7], fill=col)
 
-def to92(d, col, row, name="温度センサー"):
+def to92(d, col, row, labels=("VDD", "OUT", "GND"), name="温度センサー"):
     """TO-92 の部品（温度センサー）。足は3本、となりあう3列。片面が平ら。"""
     x1, x3, y = cx(col), cx(col + 2), cy(row)
     mx = (x1 + x3) / 2
-    d.pieslice([mx - 40, y - 74, mx + 40, y + 6], 180, 360,
+    d.pieslice([mx - 42, y - 60, mx + 42, y + 6], 180, 360,
                fill=(48, 50, 54), outline=(28, 30, 32), width=2)
-    d.rectangle([mx - 40, y - 34, mx + 40, y - 10], fill=(48, 50, 54))
-    d.line([mx - 40, y - 34, mx - 40, y - 10], fill=(120, 124, 128), width=4)
-    center(d, mx, y - 58, "平ら", bold(13), (200, 204, 208))
-    for i in range(3):
+    d.rectangle([mx - 42, y - 28, mx + 42, y - 8], fill=(48, 50, 54))
+    d.line([mx - 42, y - 28, mx - 42, y - 8], fill=(130, 134, 138), width=5)
+    d.text((mx + 52, y - 46), name, font=bold(15), fill=INK)
+    d.text((mx + 52, y - 22), "平らな面を手前に", font=reg(13), fill=GRAY)
+    for i, lab in enumerate(labels):
         x = cx(col + i)
-        d.line([x, y - 12, x, y], fill=(176, 180, 182), width=4)
+        d.line([x, y - 10, x, y], fill=(176, 180, 182), width=4)
         d.ellipse([x - 10, y - 10, x + 10, y + 10], fill=GOLD,
-                  outline=(180, 150, 40), width=2)
-    center(d, mx, y + 16, name, bold(15), INK)
+                  outline=(180, 150, 40), width=3)
+        center(d, x, y + 16, lab, bold(14), INK)
 
 def cds(d, col, row):
     """CdS（光センサー）。足は2本、となりあう2列。向きはない。"""
