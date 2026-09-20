@@ -13,7 +13,8 @@ GOLD  = (240, 196, 86)
 CHIP  = (66, 71, 78)
 USB   = (216, 220, 226)
 BTN   = (240, 240, 238)
-LED   = (116, 212, 158)
+PWR   = (78, 146, 242)                  # PWR は青
+LED_L = (246, 138, 46)                  # マイコンのとなりの L は だいだい
 WHITE = (255, 255, 255)
 
 def s(v):  return [int(round(x * S)) for x in v]
@@ -52,8 +53,9 @@ def draw(face):
     # リセットボタン
     rr(d, [38, 50, 74, 86], 9, BTN)
     ci(d, 56, 68, 10, GOLD, (219, 170, 62), 2.5)
-    # 電源ランプ
-    ci(d, 24, 92, 5, LED, (74, 178, 126), 2.5)
+    # ランプ2つ。USB を右にした向きで、実物どおりの位置に
+    ci(d, 29, 52, 5.5, PWR,   (44, 104, 202), 2.5)   # PWR：左のはし寄り
+    ci(d, 81, 92, 4.8, LED_L, (212, 104, 24), 2.5)   # L：マイコンの左下の角
     return im.resize((W * 2, H * 2), Image.LANCZOS)
 
 for face, name in ((False, "board.png"), (True, "board-face.png")):
