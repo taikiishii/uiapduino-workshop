@@ -72,7 +72,7 @@ CdS だけでは電圧にならないので、**もう1つ抵抗と組にする*
 
 :::
 
-![5V ── CdS ── A2 ── 10kΩ ── GND の順につなぐ](image/index/bb_cds.png)（ピン名を書きこむ）
+![5V ── CdS ── A2 ── 10kΩ ── GND の順につなぐ](image/index/bb_cds.png)
 
 ---
 

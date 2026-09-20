@@ -72,7 +72,7 @@ wip: 写真まち
 
 :::
 
-![3本の足を 3V3・A2・GND につなぐ](image/index/bb_vr.png)（ピン名を書きこむ）
+![3本の足を 3V3・A2・GND につなぐ](image/index/bb_vr.png)
 
 ---
 
