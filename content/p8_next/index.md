@@ -59,7 +59,7 @@ desc: UIAPduino でできること・できないこと。もっと作りたく�
 ---
 
 # 書いたプログラムは ムダにならない
-**UNO R4** と **ESP32** は、**Arduino のことば**で書けるよ。
+**Pico**・**UNO R4**・**ESP32** は、**Arduino のことば**で書けるよ。
 
 - `pinMode` `digitalWrite` `analogRead` … そのまま使える
 - `for` `if` `関数` … 考え方は どのマイコンでも同じ
