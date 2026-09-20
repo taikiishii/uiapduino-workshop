@@ -318,23 +318,22 @@ def servo(d, x, y, w=250, h=150):
     return [(x - 62, y + h * (0.34 + 0.18 * i)) for i in range(3)]
 
 def dip(d, col, top_pins, bot_pins, title="DRV8835", fill=(28, 110, 70)):
-    """300mil の DIP モジュール。溝をまたいで f行・e行 に入る（6列ぶん）"""
+    """300mil の DIP モジュール。溝をまたいで f行・e行 に入る（6列ぶん）。
+    端子名は本体の中に書く（まわりの配線と重ならないように）。"""
     n = len(top_pins)
     x1, x2 = cx(col) - 20, cx(col + n - 1) + 20
-    y1, y2 = cy("f") - 24, cy("e") + 24
+    y1, y2 = cy("f") - 26, cy("e") + 26
     d.rounded_rectangle([x1, y1, x2, y2], radius=8, fill=fill,
                         outline=(16, 80, 50), width=3)
-    center(d, (x1 + x2) / 2, (y1 + y2) / 2 - 12, title, bold(20), WHITE)
+    center(d, (x1 + x2) / 2, cy("g") - 32, title, bold(20), (20, 90, 58))
     for i, lab in enumerate(top_pins):
         x = cx(col + i)
         d.ellipse([x - 9, cy("f") - 9, x + 9, cy("f") + 9], fill=GOLD)
-        d.line([x, cy("f") - 24, x, cy("g") + 14], fill=(150, 154, 158), width=2)
-        center(d, x, cy("g") - 6, lab, bold(11), (20, 90, 58))
+        center(d, x, cy("f") + 12, lab, bold(11), WHITE)
     for i, lab in enumerate(bot_pins):
         x = cx(col + i)
         d.ellipse([x - 9, cy("e") - 9, x + 9, cy("e") + 9], fill=GOLD)
-        d.line([x, cy("e") + 24, x, cy("d") - 12], fill=(150, 154, 158), width=2)
-        center(d, x, cy("d") - 6, lab, bold(11), (20, 90, 58))
+        center(d, x, cy("e") - 26, lab, bold(11), WHITE)
 
 def motor(d, x, y, r=76):
     d.ellipse([x - r, y - r, x + r, y + r], fill=(150, 154, 158),
