@@ -263,22 +263,24 @@ def cds(d, col, row):
     center(d, mx, my + 34, "CdS", bold(15), (120, 100, 40))
 
 def sr04(d, col, row, pins=("Vcc", "Trig", "Echo", "Gnd")):
-    """HC-SR04。端子4本を1行にさす。本体は端子の行から 溝がわへ のびる。"""
+    """HC-SR04（45×20mm）。端子4本を1行にさす。本体は端子の行から 溝がわへ のびる。
+    実物は幅 17列ぶんもあるので、さした位置より ずっと左右に張り出す。"""
     y = cy(row)
-    x1, x2 = cx(col) - 2.2 * PITCH, cx(col + 3) + 2.2 * PITCH
-    top = y + 18
-    d.rounded_rectangle([x1, top, x2, top + 168], radius=8,
+    mx = (cx(col) + cx(col + 3)) / 2
+    hw = 8.85 * PITCH                      # 45mm ＝ 約17.7列
+    x1, x2, top = mx - hw, mx + hw, y + 18
+    h = hw * 2 / 2.25                      # 20mm ぶんの高さ
+    d.rounded_rectangle([x1, top, x2, top + h], radius=10,
                         fill=(38, 64, 140), outline=(24, 44, 100), width=3)
-    for k in (0.26, 0.74):
-        mx = x1 + (x2 - x1) * k
-        my = top + 84
-        d.ellipse([mx - 56, my - 56, mx + 56, my + 56], fill=(176, 180, 184),
-                  outline=(120, 124, 128), width=3)
-        d.ellipse([mx - 40, my - 40, mx + 40, my + 40], fill=(150, 154, 158),
-                  outline=(120, 124, 128), width=2)
-        for r in (30, 20, 10):
-            d.ellipse([mx - r, my - r, mx + r, my + r], outline=(120, 124, 128), width=2)
-    center(d, (x1 + x2) / 2, top + 6, "HC-SR04", bold(19), WHITE)
+    for k in (0.245, 0.755):
+        cxx, cyy, r = x1 + (x2 - x1) * k, top + h * 0.56, h * 0.36
+        d.ellipse([cxx - r, cyy - r, cxx + r, cyy + r], fill=(178, 182, 186),
+                  outline=(118, 122, 126), width=3)
+        for q in (0.78, 0.56, 0.34, 0.14):
+            rr = r * q
+            d.ellipse([cxx - rr, cyy - rr, cxx + rr, cyy + rr],
+                      outline=(128, 132, 136), width=2)
+    center(d, mx, top + 12, "HC-SR04", bold(22), WHITE)
     for i, lab in enumerate(pins):
         x = cx(col + i)
         d.line([x, y, x, top], fill=(176, 180, 182), width=4)
