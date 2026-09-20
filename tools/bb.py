@@ -190,20 +190,25 @@ def tact(d, col_a, col_b):
     center(d, mx, yd + 40, "d行どうしも いつもつながっている", bold(15), (120, 128, 132))
 
 def vr(d, col, row):
-    """可変抵抗（つまみ）。端子は3本、同じ行のとなりあう3列。まん中がワイパー。"""
-    x1, x3, y = cx(col), cx(col + 2), cy(row)
-    d.rounded_rectangle([x1 - 24, y - 12, x3 + 24, y + 70], radius=8,
+    """可変抵抗（つまみ）。上から見ると正方形で、3行ぶんの大きさ。
+    端子は3本、同じ行のとなりあう3列。まん中がワイパー。
+    本体は端子の行から、溝がわへ 3行ぶん のびる。"""
+    y, cxm = cy(row), cx(col + 1)
+    S = PITCH * 3                       # 3行ぶん＝正方形
+    x1, y1 = cxm - S / 2, y - 14
+    d.rounded_rectangle([x1, y1, x1 + S, y1 + S], radius=8,
                         fill=(44, 92, 198), outline=(28, 62, 150), width=3)
-    mx, my = (x1 + x3) / 2, y + 32
-    d.ellipse([mx - 30, my - 30, mx + 30, my + 30], fill=(96, 140, 226),
+    mx, my = cxm, y1 + S / 2
+    d.ellipse([mx - 38, my - 38, mx + 38, my + 38], fill=(96, 140, 226),
               outline=(28, 62, 150), width=3)
-    d.line([mx + 18, my, mx - 18, my], fill=WHITE, width=7)      # つまみの向き
-    d.polygon([(mx - 26, my), (mx - 12, my - 10), (mx - 12, my + 10)], fill=WHITE)
-    for i in range(3):
+    d.line([mx + 24, my, mx - 24, my], fill=WHITE, width=8)
+    d.polygon([(mx - 34, my), (mx - 18, my - 12), (mx - 18, my + 12)], fill=WHITE)
+    for i in range(3):                  # 端子は本体の上にのせて見えるように
         x = cx(col + i)
         d.ellipse([x - 10, y - 10, x + 10, y + 10], fill=GOLD,
-                  outline=(180, 150, 40), width=2)
-    center(d, cx(col + 1), y - 36, "まん中がワイパー", bold(15), (60, 90, 170))
+                  outline=(180, 150, 40), width=3)
+    d.text((x1 + S + 14, my - 28), "まん中が", font=bold(15), fill=(60, 90, 170))
+    d.text((x1 + S + 14, my - 6), "ワイパー", font=bold(15), fill=(60, 90, 170))
 
 def buzzer(d, x, y, r=92):
     """圧電ブザー。赤・黒のリード線がついている。（ボードの外に置く）"""
