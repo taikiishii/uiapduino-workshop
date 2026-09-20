@@ -112,7 +112,7 @@ LEDは**電気を流しすぎるとこわれる**。抵抗は「流れる量を�
 
 > 📷 配線のようすを真上から撮った写真（ピン名を書きこむ）
 
-![5番ピン → LED → 抵抗 → GND の順につなぐ](image/index/wiring_led.png)
+![5番ピン → 赤LED → 1kΩ → GND の順につなぐ](image/index/bb_led.png)
 
 ---
 

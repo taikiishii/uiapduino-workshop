@@ -72,7 +72,7 @@ wip: 写真まち
 
 :::
 
-> 📷 HC-SR04 の配線を真上から撮った写真（ピン名を書きこむ）
+![Vcc→5V、Trig→5番、Echo→7番、Gnd→GND](image/index/bb_sr04.png)
 
 ---
 
