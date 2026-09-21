@@ -1,0 +1,22 @@
+/* このファイルは build が site.toml から生成します。直接編集しないでください。 */
+
+:root{
+  --accent:#00a99d;
+  --accent-dark:#007c74;
+  --accent-bright:#00b5a8;
+}
+
+/* もくじカードの枠色（frontmatter の color:） */
+.c1{ --frame:#ffb3c1; }
+.c2{ --frame:#ffd98a; }
+.c3{ --frame:#a7e3a7; }
+.c4{ --frame:#9fd8f0; }
+.c5{ --frame:#c9b3e8; }
+
+/* もくじのセクションの区切り線 */
+.s-intro .section-line{ background:linear-gradient(90deg,#ffb3c1,#ffd98a); }
+.s-basic .section-line{ background:linear-gradient(90deg,#ffd98a,#a7e3a7,#9fd8f0); }
+.s-ctrl .section-line{ background:linear-gradient(90deg,#9fd8f0,#a8b6ff,#c9b3e8); }
+.s-adv .section-line{ background:linear-gradient(90deg,#c9b3e8,#ffcf5c,#ff8a80); }
+.s-project .section-line{ background:linear-gradient(90deg,#ff8a80,#ffd180,#a5d6a7); }
+.s-appendix .section-line{ background:linear-gradient(90deg,#cfd8dc,#b0bec5); }

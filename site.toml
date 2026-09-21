@@ -1,0 +1,93 @@
+# =========================================================================
+# site.toml  --  この教材だけのちがいを集めた設定
+#
+# 共通のしくみ（build の手順・CSS・JS・テンプレート）は workshop-kit 側にある。
+# ここに無いものを変えたくなったら、kit を直す＝ぜんぶの教材に効く、と考える。
+# =========================================================================
+
+[site]
+name         = "UIAPduino 体験ワークショップ"
+header       = "UIAPduino 体験ワークショップ"
+logo         = "board.png"                # 見出しの頭に出すボードの絵（assets/board.png）
+base_url     = "https://taikiishii.github.io/uiapduino-workshop/"
+title_suffix = " — UIAPduino ワークショップ"
+
+accent        = "#00a99d"
+accent_dark   = "#007c74"
+accent_bright = "#00b5a8"
+
+# ---- もくじカードの枠色 ---------------------------------------------------
+# frontmatter の color: がこのキーを引く。c1〜c5 をぐるぐる使う。
+[palette]
+c1 = "#ffb3c1"
+c2 = "#ffd98a"
+c3 = "#a7e3a7"
+c4 = "#9fd8f0"
+c5 = "#c9b3e8"
+
+# ---- もくじのセクション ---------------------------------------------------
+# 並べた順に表示される。name は frontmatter の section: と一致させる。
+# 章フォルダ名の頭： i=導入編 / b=基本編 / c=制御編 / e=発展編 / p=作品編 / x=付録
+[[sections]]
+name  = "導入編"
+cls   = "s-intro"
+title = "🔰 導入編"
+sub   = "Arduino と UIAPduino をはじめよう"
+line  = ["#ffb3c1", "#ffd98a"]
+
+[[sections]]
+name  = "基本編"
+cls   = "s-basic"
+title = "🔌 基本編"
+sub   = "LED・スイッチ・つまみ　＜ここまでで半日コース＞"
+line  = ["#ffd98a", "#a7e3a7", "#9fd8f0"]
+
+[[sections]]
+name  = "制御編"
+cls   = "s-ctrl"
+title = "🔁 制御編"
+sub   = "くりかえしと条件でプログラムを組み立てる　＜ここまでで1日コース＞"
+line  = ["#9fd8f0", "#a8b6ff", "#c9b3e8"]
+
+[[sections]]
+name  = "発展編"
+cls   = "s-adv"
+title = "🚀 発展編"
+sub   = "センサーで感じて、モーターで動かす"
+line  = ["#c9b3e8", "#ffcf5c", "#ff8a80"]
+
+[[sections]]
+name  = "作品編"
+cls   = "s-project"
+title = "🛠 作品編"
+sub   = "自分だけの作品を、構想から発表まで　＜複数日コース＞"
+line  = ["#ff8a80", "#ffd180", "#a5d6a7"]
+
+[[sections]]
+name  = "付録"
+cls   = "s-appendix"
+title = "📎 付録"
+sub   = "部品・ピン配置・こまったとき・はんだ付け"
+line  = ["#cfd8dc", "#b0bec5"]
+
+# ---- コードの色分け -------------------------------------------------------
+# Arduino でよく出てくる関数・型。コードの中で青く表示される。
+[code]
+namespaces = [
+  "pinMode", "digitalWrite", "digitalRead",
+  "analogRead", "analogWrite",
+  "analogReadResolution", "analogWriteResolution", "analogWriteFrequency",
+  "delay", "delayMicroseconds", "millis", "micros",
+  "tone", "noTone", "pulseIn",
+  "map", "constrain", "random",
+  "setup", "loop",
+  "Serial", "Wire", "SPI", "EEPROM", "Servo",
+]
+
+# ---- 博士の吹き出し -------------------------------------------------------
+[mascot]
+auto     = true   # 60文字未満の短い吹き出しは顔だけのアイコンにする
+full_min = 60     # >> ／ >| で個別に上書きできる
+
+[license]
+copyright = "Copyright © 2026 Taiki Ishii"

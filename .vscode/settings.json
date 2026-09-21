@@ -1,4 +1,7 @@
 {
+  // このファイルは workshop-kit が配置します。直さずに kit 側を直してください。
+  //   workshop-kit/wskit/files/vscode-settings.json
+  //
   // VS Code の Markdown 編集で画像を貼り付けたときの保存先。
   // その章フォルダの image/index/ に保存する（ドキュメント名 index.md に由来）。
   // 参照も image/index/... で挿入され、build.py はそのまま公開できる。

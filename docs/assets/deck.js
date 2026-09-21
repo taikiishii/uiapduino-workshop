@@ -2,6 +2,10 @@
    deck.js  --  埋め込みMarkdownを読み込んでスライド化する小さなエンジン
    依存ライブラリなし。file:// で開いてもそのまま動く（ネット不要）。
 
+   すべてのワークショップで同じものを使う（workshop-kit）。教材ごとに変えたい
+   ところ（コードで青くする語・博士のアイコンの出しかた）は assets/site-config.js
+   の window.DECK から読む。このファイルを教材ごとに書きかえないこと。
+
    各章HTMLの中に
      <script type="text/markdown" id="deck-source"> ...Markdown... </script>
    を置いておくと、このスクリプトがそれをスライドに変換します。
@@ -24,11 +28,19 @@
 (function () {
   "use strict";
 
+  // ---- 教材ごとの設定 ---------------------------------------------------
+  // assets/site-config.js が window.DECK を定義する（build が site.toml から生成）。
+  // 無くても既定値でそのまま動くので、この1ファイルだけでも壊れない。
+  var CFG = window.DECK || {};
+
   // 吹き出しに出る博士の絵（章ページは1階層下なので ../ から）
-  var MASCOT_FULL = "../assets/hakase.png";      // 全身。縦に長いので長文の吹き出し向き
-  var MASCOT_FACE = "../assets/hakase-face.png"; // 顔だけ。1～2行の短い吹き出し向き
+  var MASCOT = CFG.mascot || {};
+  var MASCOT_FULL = MASCOT.full || "../assets/hakase.png";      // 全身。長文の吹き出し向き
+  var MASCOT_FACE = MASCOT.face || "../assets/hakase-face.png"; // 顔だけ。短い吹き出し向き
   // 本文がこの文字数以上になったら全身にする（>> ／ >| で個別に上書きできる）
-  var MASCOT_FULL_MIN = 60;
+  var MASCOT_FULL_MIN = MASCOT.fullMin || 60;
+  // auto:false にすると長さを見ずに必ず全身（顔アイコンを使わない教材向け）
+  var MASCOT_AUTO = MASCOT.auto !== false;
 
   // ---- インライン記法 ---------------------------------------------------
   function esc(s) {
@@ -78,8 +90,15 @@
     js: /^(let|const|var|function|return|if|else|for|while|do|break|continue|new|of|in|switch|case|default|class|this|true|false|null|undefined)$/,
     py: /^(def|return|if|elif|else|for|while|break|continue|import|from|as|in|is|and|or|not|class|with|pass|lambda|global|True|False|None)$/
   };
-  // Arduino / micro:bit でよく出てくる関数・グループ名。青くして目立たせる
-  var NAMESPACES = /^(pinMode|digitalWrite|digitalRead|analogRead|analogWrite|analogReadResolution|analogWriteResolution|analogWriteFrequency|delay|delayMicroseconds|millis|micros|tone|noTone|pulseIn|map|constrain|random|setup|loop|Serial|Wire|SPI|EEPROM|Servo|basic|input|music|led|radio|pins|control|serial|console|Math)$/;
+  // その教材でよく出てくる関数・グループ名。青くして目立たせる。
+  // 語は site.toml の [code] namespaces で決める（教材ごとに違う）。
+  var NAMESPACES = (function () {
+    var words = CFG.namespaces || [];
+    if (!words.length) return { test: function () { return false; } };
+    return new RegExp("^(" + words.map(function (w) {
+      return w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }).join("|") + ")$");
+  })();
 
   function langKey(lang) {
     if (/^(cpp|c|ino|arduino|c\+\+)$/.test(lang)) return "cpp";
@@ -191,7 +210,8 @@
         if (/^(⚠|！|注意)/.test(text)) { cls = " warn"; text = text.replace(/^(⚠️?|！|注意[:：]?)\s*/, ""); }
         else if (/^💪/.test(text)) { cls = " challenge"; text = text.replace(/^💪\s*/, ""); }
         // 指定がなければ本文（記号を除いたあと）の長さで決める
-        var full = pin ? pin === "full" : text.length >= MASCOT_FULL_MIN;
+        var full = pin ? pin === "full"
+                       : (!MASCOT_AUTO || text.length >= MASCOT_FULL_MIN);
         out.push(
           '<div class="callout' + cls + (full ? " icon-full" : " icon-face") + '">' +
             '<img class="hakase ' + (full ? "full" : "face") + '"' +

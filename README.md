@@ -30,17 +30,32 @@ LEDをチカチカさせるところから、センサーとモーターを組�
 ## 新しい資料を作るには
 
 `content/` に Markdown を書いて `python build.py` を実行するだけで、HTML・QRコード・もくじが自動生成されます。
-くわしい手順は **[AUTHORING.md](AUTHORING.md)** を参照してください（ひな形は `content/_template/index.md`）。
+
+- この教材だけのきまり … **[AUTHORING.md](AUTHORING.md)**
+- 共通の書き方（記法・画像・1枚に入る量） … **[workshop-kit の AUTHORING.md](https://github.com/taikiishii/workshop-kit/blob/main/AUTHORING.md)**
+
+ビルドのしくみ（CSS・JavaScript・テンプレート・変換スクリプト）は、
+ほかのワークショップ教材と共有している **[workshop-kit](https://github.com/taikiishii/workshop-kit)** にあります。
+はじめての1回だけ、となりのフォルダに置いて入れてください。
+
+```bash
+git clone https://github.com/taikiishii/workshop-kit.git ../workshop-kit
+pip install -e ../workshop-kit
+```
 
 ## リポジトリ構成（概要）
 
 **1つの章 = 1つのフォルダ**（`content/` と `docs/` が対称）。
 
+- `site.toml` … **この教材だけの設定**（公開URL・セクション・カードの色・コードで青くする語）
 - `content/<章>/` … 各章の **`index.md`（編集するのはここ）** と `image/index/`（写真・画面キャプチャ）
-- `templates/`, `build.py` … 変換のしくみ
+- `content/_index/` … もくじページに足すブロック（`refs.html` / `license.html`）
+- `assets/` … この教材だけの画像（ヘッダーのボードの絵）
+- `build.py` … workshop-kit を呼ぶだけの数行
 - `docs/<章>/` … `build.py` が生成する `index.html` / `qr.svg` / `image/index/`（GitHub Pages 配信元。直接編集しない）
-- `docs/assets/` … 共通部品（`deck.css` / `deck.js` / `hakase.png` / `hakase-face.png` / `qr.svg`）
+- `docs/assets/` … 共通部品（workshop-kit から配置）＋ `site-theme.css` / `site-config.js`（`site.toml` から生成）
 - `verify/` … **実機検証用の Arduino スケッチ**（教材に書く値を実機で確かめるためのもの。公開教材ではない）
+- `tools/` … 配線図（ブレッドボード図）を SVG で描く Python スクリプト
 - `CURRICULUM.md` … カリキュラム案・ピン配置・注意点・検証プラン
 
 章フォルダ名の頭は **i=導入編 / b=基本編 / c=制御編 / e=発展編 / p=作品編 / x=付録** ＋ 連番です。
