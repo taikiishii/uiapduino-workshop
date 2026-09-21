@@ -20,6 +20,8 @@
                     （短い→顔だけ ／ 長い→全身）
      >> 本文         長さに関係なく全身の博士にする（見せ場用）
      >| 本文         長さに関係なく顔だけの博士にする
+     📷 説明         写真まちの目印。点線の枠で「まだ写真がない」と示す
+                    （`> 📷 …` と書いてもよい。どちらも同じ枠になる）
      :::            スライド内を左右カラムに分ける区切り
      ```js …  ```   コードブロック（色分け＋行番号＋コピーボタン）
      **太字** *斜体* `コード` [リンク](url)
@@ -41,6 +43,9 @@
   var MASCOT_FULL_MIN = MASCOT.fullMin || 60;
   // auto:false にすると長さを見ずに必ず全身（顔アイコンを使わない教材向け）
   var MASCOT_AUTO = MASCOT.auto !== false;
+
+  // 写真まちの目印。行頭の 📷 と、吹き出し形式の `> 📷` の両方を受ける。
+  var PHOTO_TODO = /^>?[ \t]*📷[ \t]*/;
 
   // ---- インライン記法 ---------------------------------------------------
   function esc(s) {
@@ -195,6 +200,17 @@
         continue;
       }
 
+      // 写真まち（📷 … ／ > 📷 …）
+      // 執筆中に「ここに写真が入る」と書いておく目印。消さずに枠のまま出す。
+      // オーナーがビルド成果物を見たときに、未完成の箇所がひと目で分かるように。
+      // 吹き出しより先に判定する（`> 📷` を博士のセリフにしないため）。
+      if (PHOTO_TODO.test(line)) {
+        out.push('<div class="photo-todo"><span class="icon">📷</span>' +
+                 '<span class="note">' + inline(line.replace(PHOTO_TODO, "")) + "</span></div>");
+        i++;
+        continue;
+      }
+
       // 吹き出し（blockquote）
       if (/^>\s?/.test(line)) {
         // アイコンの指定は先頭行だけで見る（>> ＝全身、>| ＝顔だけ）
@@ -266,6 +282,11 @@
       var ls = c.replace(/\r/g, "").split("\n").filter(function (l) { return l.trim() !== ""; });
       return ls.length > 0 && ls.every(isImageLine);
     }
+    // 写真まちだけのチャンクか（写真が入る予定の場所なので画像カラム扱いにする）
+    function isPhotoTodoChunk(c) {
+      var ls = c.replace(/\r/g, "").split("\n").filter(function (l) { return l.trim() !== ""; });
+      return ls.length > 0 && ls.every(function (l) { return PHOTO_TODO.test(l); });
+    }
     // コードブロックだけのチャンクか（＝少し広く取るコードカラム）
     function isCodeChunk(c) {
       var t = c.replace(/\r/g, "").trim();
@@ -279,7 +300,8 @@
       var header = chunks.shift();
       var headerHTML = header.trim() ? blocks(header) : "";
       var cols = chunks.map(function (c) {
-        var extra = isMediaChunk(c) ? " col-media" : (isCodeChunk(c) ? " col-code" : "");
+        var extra = (isMediaChunk(c) || isPhotoTodoChunk(c)) ? " col-media"
+                  : (isCodeChunk(c) ? " col-code" : "");
         return '<div class="col' + extra + '">' + blocks(c) + "</div>";
       }).join("");
       inner = headerHTML + '<div class="cols">' + cols + "</div>";
