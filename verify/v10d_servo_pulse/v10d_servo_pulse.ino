@@ -3,11 +3,10 @@ const int LED = 5;
 
 void setup() {
   pinMode(LED, OUTPUT);
-  analogWriteResolution(8);
 }
 
 void loop() {
-  int v = analogRead(CDS);
-  digitalWrite(LED, HIGH); delay(v / 4);
-  digitalWrite(LED, LOW);  delay(v / 4);
+  int t = analogRead(CDS) / 4;   // 明るいほど長い
+  digitalWrite(LED, HIGH); delay(t);
+  digitalWrite(LED, LOW);  delay(t);
 }
