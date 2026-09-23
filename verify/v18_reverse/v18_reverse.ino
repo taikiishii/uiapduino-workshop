@@ -57,9 +57,9 @@ void loop() {
   digitalWrite(DIR, HIGH); analogWrite(AENBL, 200);   // 片方向
   delay(2000);
   analogWrite(AENBL, 0);                              // 止める
-  delay(2000);
+  delay(500);
   digitalWrite(DIR, LOW);  analogWrite(AENBL, 200);   // もう片方
   delay(2000);
   analogWrite(AENBL, 0);
-  delay(2000);
+  delay(500);
 }
