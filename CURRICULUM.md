@@ -432,6 +432,28 @@ micro:bit（センサー内蔵）／Raspberry Pi（カメラ・画面）。
 「固定抵抗を 4.7kΩ に変えるべき」と誤った結論を出しかけた。
 **測定条件が正しいかを先に確かめる**こと。部品を疑う前に測り方を疑う。
 
+### HC-SR04 の仕様（2026-09-23・データシートで確認）
+
+Elecfreaks の Ultrasonic Ranging Module HC-SR04 データシートより。
+<https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf>
+
+| 項目 | 値 |
+|---|---|
+| 測定範囲 | **2cm 〜 4m** |
+| 測定角 | **15度** |
+| 精度 | 3mm |
+| 電源 | DC 5V ／ 15mA |
+| 超音波の周波数 | 40kHz |
+| TRIG に入れる合図 | **10µs 以上の High** |
+| 寸法 | **45×20×15mm** |
+
+- 教材の `digitalWrite(TRIG,HIGH); delayMicroseconds(10);` は、この
+  「10µs 以上」の要件をちょうど満たしている。
+- ⚠ **2cm より近いと測れない**。P3 に注意書きとして入れた。
+- ピンの並びはデータシート表記が `Vcc Trig Echo GND`（**裏面から見た順**）。
+  教材は**上から見た図**なので、左から **Gnd・Echo・Trig・Vcc** と書く。
+  P3 の「足は4本。VCC・TRIG・ECHO・GND」も上から見た順に直した。
+
 ### e3 の 💪 に3色LEDの課題を足し、ピンの衝突を直した（2026-09-23）
 
 💪 に「30cmで緑・20cmで緑＋青・10cmで緑＋青＋赤」を追加。
