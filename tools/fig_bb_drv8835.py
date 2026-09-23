@@ -43,12 +43,13 @@ def draw(two):
     wire(d, (DC + 1, "i"), (DC + 1, "+t"), RED)  # MODE → ＋レール（HIGHに固定）
 
     # モーターA の合図
-    wire(d, (9, "j"), (DC + 2, "j"), YELLOW)     # 7番  → APHASE（向き）
+    wire(d, (9, "h"), (DC + 2, "h"), YELLOW)     # 7番  → APHASE（向き）
     wire(d, (5, "i"), (DC + 3, "i"), ORANGE)     # 12番 → AENBL （速さ・PWM）
     if two:                                      # モーターB の合図
-        wire(d, (10, "h"), (DC + 4, "h"), GREEN) # 9番  → BPHASE（向き）
-        # 上に使える行（h・i・j）は3本ぶんしかないので、青だけ h 行を緑と
-        # 共有する。重ならないよう、上へふくらませてよける。
+        wire(d, (10, "j"), (DC + 4, "j"), GREEN) # 9番  → BPHASE（向き）
+        # 上に使える行（h・i・j）は3本ぶんしかないので、青だけ h 行を黄と
+        # 共有する。重ならないよう、上へふくらませてよける。黄を h にするのは
+        # 緑（24列まで）より短く（22列まで）、よける区間が短くてすむから。
         wire(d, (6, "h"), (DC + 5, "h"), BLUE, arc=-46)  # 6番 → BENBL（速さ・PWM）
 
     # 力の線
