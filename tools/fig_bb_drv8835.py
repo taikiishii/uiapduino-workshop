@@ -13,6 +13,11 @@
 
 ピン： AENBL=12番(A3) / APHASE=7番 / BENBL=6番(A2) / BPHASE=9番
 ジャンパーは「どこからどこへ」が分かればよいので、経路は交差してよい。
+
+⚠ ただし**どの行から出すか**は電気的に意味がある。ブレッドボードの列は
+上半分（f〜j）と下半分（a〜e）で別のまとまりなので、**上の行のピンに
+つなぐ線は、かならず f〜j 行から出す**こと。下半分から出すと、同じ列でも
+下の行のピン（まったく別の番号）につながってしまう。
 """
 import sys
 sys.path.insert(0, "tools")
@@ -42,7 +47,7 @@ def draw(two):
     wire(d, (5, "i"), (DC + 3, "i"), ORANGE)     # 12番 → AENBL （速さ・PWM）
     if two:                                      # モーターB の合図
         wire(d, (10, "h"), (DC + 4, "h"), GREEN) # 9番  → BPHASE（向き）
-        wire(d, (6, "b"), (DC + 5, "b"), BLUE)   # 6番  → BENBL （速さ・PWM）
+        wire(d, (6, "j"), (DC + 5, "h"), BLUE)   # 6番  → BENBL （速さ・PWM）
 
     # 力の線
     wire(d, (DC, "a"), (DC, "+b"), RED)                # VM  → 下の ＋レール
