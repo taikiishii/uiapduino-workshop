@@ -19,13 +19,7 @@ void setup() {
   pinMode(ECHO, INPUT);
   pinMode(LED, OUTPUT);
 }
-
 void loop() {
-  int n = kyori() / 10;
-  if (n > 10) n = 10;   // 反応なしのとき用
-  for (int i = 0; i < n; i++) {
-    digitalWrite(LED, HIGH); delay(200);
-    digitalWrite(LED, LOW);  delay(300);
-  }
-  delay(2000);
+  digitalWrite(LED, kyori() < 20 ? HIGH : LOW);
+  delay(100);
 }
