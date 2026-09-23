@@ -15,10 +15,10 @@ GREEN, GREEN_E = (22, 168, 96), (18, 118, 70)
 GOLD, GOLD_E   = (240, 196, 86), (180, 150, 40)
 SIG, PWR       = (0, 118, 110), (214, 92, 40)
 
-TOP = [("VCC", 12, "5V へ"), ("MODE", 11, "GND へ"), ("AIN1", 10, "12番(A3)"),
-       ("AIN2", 9, "6番(A2)"), ("BIN1", 8, "―"), ("BIN2", 7, "―")]
-BOT = [("VM", 1, "電池＋"), ("AOUT1", 2, "モーター"), ("AOUT2", 3, "モーター"),
-       ("BOUT1", 4, "―"), ("BOUT2", 5, "―"), ("GND", 6, "GND へ")]
+TOP = [("VCC", 12, "＋レール"), ("MODE", 11, "＋レール"), ("APHASE", 10, "7番"),
+       ("AENBL", 9, "12番(A3)"), ("BPHASE", 8, "9番"), ("BENBL", 7, "6番(A2)")]
+BOT = [("VM", 1, "電池＋"), ("AOUT1", 2, "モーターA"), ("AOUT2", 3, "モーターA"),
+       ("BOUT1", 4, "モーターB"), ("BOUT2", 5, "モーターB"), ("GND", 6, "GND へ")]
 
 P = 150                                     # 端子の間かく
 X0 = (1340 - 5 * P) / 2                     # 左はしの端子（中央ぞろえ）
@@ -45,7 +45,7 @@ for items, yy, col, name_dy, use_y in ((TOP, yt, SIG, -52, 130),
 center(d, 670, 88, "上の行 ＝ 合図（ボードとつなぐ）", bold(22), SIG)
 center(d, 670, 552, "下の行 ＝ 力（電池とモーター）", bold(22), PWR)
 d.rounded_rectangle([180, 612, 1160, 658], radius=10, fill=SOFT, outline=TEAL, width=3)
-middle(d, 670, 635, "丸の中の数字はピン番号。B側（BIN・BOUT）は 2つめのモーター用",
+middle(d, 670, 635, "丸の中の数字はピン番号。PHASE が向き、ENABLE が速さ",
        bold(20), DARKTEAL)
 save(im, "e5_motor", "drv8835_pins.png")
 print("  比 %.2f" % (1340 / 672))

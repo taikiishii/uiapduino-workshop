@@ -96,11 +96,13 @@
 
 **USBケーブルを抜いてから**つなごう。まず合図の線から。
 
-1. **VCC** → **5V** ／ **GND** → **GND**
-2. **MODE** → **GND**
-3. **AIN1** → **12番**（A3）／ **AIN2** → **6番**（A2）
+1. **VCC** → **＋レール** ／ **MODE** → **＋レール**
+2. **APHASE** → **7番**（向きを決める）
+3. **AENBL** → **12番**（A3・速さを決める）
 
-> ⚠ VCC は **3V3 ではなく 5V**。端子名は基板の印刷で確かめてね。
+> ⚠ VCC は **3V3 ではなく 5V**。MODE も**＋レール**へ。
+
+> 線は**どこからどこへ**が合っていればOK。交差してもいいよ。
 
 :::
 
@@ -121,18 +123,17 @@
 
 ---
 
-# 2本の線で向きが決まる
+# 向きと速さを分ける
 
 :::
 
-`AIN1` と `AIN2` の組み合わせで、モーターの動きが決まるよ。
+`MODE` を ＋につないだので、**2本の役わりがきれいに分かれる**よ。
 
-- `AIN1`＝大きい数、`AIN2`＝**0** → **正転**
-- `AIN1`＝**0**、`AIN2`＝大きい数 → **逆転**
-- 両方とも **0** → **止まる**（そのまま いきおいで回る）
-- 両方とも大きい数 → **ブレーキ**
+- **`APHASE`** … 向き。`HIGH` で正転、`LOW` で逆転
+- **`AENBL`** … 速さ。`0`〜`255`。**0 なら止まる**
 
-> 数の大きさが、そのまま**スピード**になるよ。
+> ⚠ 止めるのも **`analogWrite(AENBL, 0)`**。
+> `digitalWrite` では PWM が止まらないんだ。
 
 :::
 
@@ -156,22 +157,94 @@
 :::
 
 ```cpp `e5_motor` 正転と逆転をくりかえす
-const int AIN1 = 12;  // どちらも PWM が使えるピン
-const int AIN2 = 6;
+const int APHASE = 7;   // 向き
+const int AENBL  = 12;  // 速さ（PWM）
 
 void setup() {
-  pinMode(AIN1, OUTPUT);
-  pinMode(AIN2, OUTPUT);
+  pinMode(APHASE, OUTPUT);
+  pinMode(AENBL, OUTPUT);
   analogWriteResolution(8);
 }
 
 void loop() {
-  analogWrite(AIN1, 200);  analogWrite(AIN2, 0);   // 正転
+  digitalWrite(APHASE, HIGH); analogWrite(AENBL, 200);  // 正転
   delay(2000);
-  analogWrite(AIN1, 0);    analogWrite(AIN2, 200); // 逆転
+  digitalWrite(APHASE, LOW);  analogWrite(AENBL, 200);  // 逆転
   delay(2000);
-  analogWrite(AIN1, 0);    analogWrite(AIN2, 0);   // 停止
+  analogWrite(AENBL, 0);                                // 止まる
   delay(1000);
+}
+```
+
+---
+
+# モーターを2つにしよう
+ロボットカーには**左右2つ**のモーターがいる。**B のがわ**を足すよ。
+
+![モーターBを足す。合図は4本になる](image/index/bb_2motor.png)
+
+---
+
+# Bをつなぐ
+A とまったく同じ形。**B** がついた端子を使うだけだよ。
+
+1. **BPHASE** → **9番**（向き）
+2. **BENBL** → **6番**（A2・速さ）
+3. **BOUT1・BOUT2** に 2つめのモーターをつなぐ
+
+> ＋レール・−レール・電池は**そのまま**。足すのは合図2本とモーター1つ。
+
+> ⚠ はじめから **PHASE/ENABLE** にしておいたから、A の配線を
+> 組みかえずに B を足せるんだ。
+
+---
+
+# 左右で動きを変える
+2つそろうと、**曲がる**ことができるようになるよ。
+
+- 両方とも正転 … **まっすぐ進む**
+- 片方だけ止める … その方向に**曲がる**
+- 左右を逆向きに … **その場で回る**
+- 片方だけ遅くする … **ゆるく曲がる**
+
+> ⚠ 同じ数にしても、モーターのクセで**まっすぐ進むとはかぎらない**。
+> 片方の数を少し変えて、まっすぐになる組み合わせをさがそう。
+
+---
+
+# 2つ動かすプログラム
+
+:::
+
+前進 → 右に曲がる → その場で回る、をくりかえすよ。
+
+1. 右のプログラムを書きこむ
+2. タイヤをつけて、床で走らせてみる
+3. `200` を変えて、速さを調整する
+
+> `muku()` のように**関数にまとめる**と、もっと読みやすくなるよ（c4）。
+
+:::
+
+```cpp `e5_car` 2つのモーターで走る
+const int APHASE = 7,  AENBL = 12;   // 左
+const int BPHASE = 9,  BENBL = 6;    // 右
+
+void setup() {
+  pinMode(APHASE, OUTPUT); pinMode(AENBL, OUTPUT);
+  pinMode(BPHASE, OUTPUT); pinMode(BENBL, OUTPUT);
+  analogWriteResolution(8);
+}
+
+void susumu(int a, int b) {          // 左右の速さを決める
+  digitalWrite(APHASE, HIGH); analogWrite(AENBL, a);
+  digitalWrite(BPHASE, HIGH); analogWrite(BENBL, b);
+}
+
+void loop() {
+  susumu(200, 200); delay(2000);     // まっすぐ
+  susumu(200, 0);   delay(1000);     // 右に曲がる
+  susumu(0, 0);     delay(1000);     // 止まる
 }
 ```
 
@@ -183,8 +256,8 @@ void loop() {
 
 1. `200` を **80・255** に変えて、速さのちがいを見る
 2. `for` を使って、だんだん速く・だんだん遅くする
-3. つまみ（b4）でスピードを決める（つまみは **A0**＝1番へ）
-4. モーターを**2つ**つないで（`BIN1`・`BIN2`）、左右の車輪のように動かす
+3. つまみ（b4）でスピードを決める（つまみは **A1**＝0番へ）
+4. `susumu()` を使って、**四角に走る**コースを作る
 
 > ⚠ 数字を小さくしすぎると、**うなるだけで回らない**ことがある。
 > 回りはじめる最低の数字をさがしてみよう。
