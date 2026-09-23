@@ -61,7 +61,7 @@ wip: 写真まち
 2. ピンは左から **Gnd・Echo・Trig・Vcc**
 3. **Echo**→**7番** ／ **Trig**→**9番**
 4. **Vcc**→**＋レール** ／ **Gnd**→**−レール**
-5. LEDは **16・17列**（8番から）
+5. LEDは **16・17列**（5番から）
 
 > ⚠ ピンの名前は**部品の裏**に書いてある。
 > 上から見ると、左右が逆に見えるので気をつけて。
@@ -107,7 +107,7 @@ wip: 写真まち
 ```cpp `e3_kyori` きょりをはかる
 const int TRIG = 9;
 const int ECHO = 7;
-const int LED  = 8;
+const int LED  = 5;
 
 int kyori() {                    // きょりを cm ではかる
   digitalWrite(TRIG, HIGH); delayMicroseconds(10); digitalWrite(TRIG, LOW);

@@ -35,7 +35,7 @@ wire(d0, (SCOL, "f"), (SCOL, "-b"), BLACK)          # Gnd → 下の −レー�
 wire(d0, (3, "a"), (3, "-b"), BLACK)           # ボードのGND → 同じレール
 
 # ── LED（基本編と同じ 16・17列）──────────────────────
-wire(d0, (11, "b"), (16, "b"), RED)            # 8番 → LED
+wire(d0, (8, "b"), (16, "b"), RED)             # 5番 → LED
 led(d0, 16, "b", note=False)
 resistor_v(d0, 17, "a", "-b")
 

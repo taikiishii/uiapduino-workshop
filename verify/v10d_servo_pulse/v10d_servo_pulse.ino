@@ -1,6 +1,6 @@
 const int TRIG = 9;
 const int ECHO = 7;
-const int LED  = 8;
+const int LED  = 5;
 
 int kyori() {                    // きょりを cm ではかる
   digitalWrite(TRIG, HIGH); delayMicroseconds(10); digitalWrite(TRIG, LOW);
