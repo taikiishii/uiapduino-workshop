@@ -609,7 +609,25 @@ HC-SR04 の ECHO（5V）は、どのピンでも規格内に収まる。
 - 💪「つまみでスピード」の つまみを **A0(1番)** へ逃がした（A2 はドライバが使う）
 - 配線図・拡大図の AIN2 を 6番(A2) に
 
-**→ 教訓：`analogWrite` と `digitalWrite` を同じピンに混ぜない。**
+**⚠ これは Arduino の仕様ではなく、このコアの不足**（ソースで確認）
+
+公式 AVR コアの `digitalWrite` は、PWM 対応ピンなら
+`if (timer != NOT_ON_TIMER) turnOffPWM(timer);` で**先に PWM を止めてから**
+ポートに書く。だから標準の Arduino では `digitalWrite(LOW)` で止まる。
+
+UIAP コア（ch32v 1.0.42）の `digitalWrite` は `digitalWriteFast` を
+呼ぶだけで、`turnOffPWM` に相当する処理がない。タイマーが PWM を
+出しつづけるので、GPIO に書いても出力が変わらない。
+
+なお `pinMode` に「デジタル出力／アナログ出力」の区別はない
+（`INPUT` / `OUTPUT` / `INPUT_PULLUP` の3つだけ）。`analogWrite` は
+内部でタイマーを設定するので、**後始末は `digitalWrite` 側の仕事**という
+のが Arduino の設計。そこが抜けている。
+
+`pulseIn` が使えない・`analogRead(A6)` が 0 を返すのと同じ、
+**コアの作り込み不足**。将来のパッケージ更新で直る可能性がある。
+
+**→ 教訓：このボードでは `analogWrite` と `digitalWrite` を同じピンに混ぜない。**
 
 （旧メモ）つぎは `verify/v17_pwmoff/` で止め方を3とおり試す
    （`digitalWrite(LOW)` ／ `analogWrite(0)` ／ `pinMode` を入れ直す）。

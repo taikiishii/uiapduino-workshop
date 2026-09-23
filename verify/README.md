@@ -243,6 +243,33 @@ v02・v04 は候補ピンを順番に1本ずつ試します。いま何番目を
 → **`analogWrite` を出したピンは `analogWrite(pin, 0)` で止める。**
   `digitalWrite(LOW)` では止まらない。
 
+**⚠ これは Arduino の仕様ではなく、このコアの不足**（2026-09-23 ソースで確認）
+
+公式の AVR コア `wiring_digital.c` の `digitalWrite` には、
+PWM を止める処理が入っている：
+
+```c
+// If the pin that support PWM output, we need to turn it off
+// before doing a digital write.
+if (timer != NOT_ON_TIMER) turnOffPWM(timer);
+```
+
+ところが **UIAP コア（ch32v 1.0.42）の `digitalWrite` は**
+
+```c
+void digitalWrite(uint32_t ulPin, uint32_t ulVal)
+{
+  digitalWriteFast(digitalPinToPinName(ulPin), ulVal);
+}
+```
+
+とポートに書くだけで、**`turnOffPWM` に相当する処理がない**
+（コア全体を検索しても見あたらない）。タイマーが PWM を出しつづけて
+いるので、GPIO に書いても出力が変わらない。
+
+`pulseIn` が使えない件・`analogRead(A6)` が 0 を返す件と同じ、
+**コアの作り込み不足**の一例。将来のパッケージ更新で直る可能性がある。
+
 これが e5 のモーターが動かなかった原因。正転のあと
 `digitalWrite(AIN1, LOW)` が効かず、AIN1 と AIN2 が両方 High 相当に
 なって **ブレーキ**（真理値表の「1 1」）がかかりつづけていた。
