@@ -317,15 +317,17 @@ def servo(d, x, y, w=250, h=150):
     center(d, x - 36, y + h * 0.78, "コネクタ", bold(13), INK)
     return [(x - 62, y + h * (0.34 + 0.18 * i)) for i in range(3)]
 
-def dip(d, col, top_pins, bot_pins, title="DRV8835", fill=(28, 110, 70)):
+def dip(d, col, top_pins, bot_pins, title="DRV8835", fill=(28, 110, 70),
+        title_dx=0):
     """300mil の DIP モジュール。溝をまたいで f行・e行 に入る（6列ぶん）。
-    端子名は本体の中に書く（まわりの配線と重ならないように）。"""
+    端子名は本体の中に書く（まわりの配線と重ならないように）。
+    title_dx … 名前を横にずらす。上に配線の端点があるときによける"""
     n = len(top_pins)
     x1, x2 = cx(col) - 20, cx(col + n - 1) + 20
     y1, y2 = cy("f") - 26, cy("e") + 26
     d.rounded_rectangle([x1, y1, x2, y2], radius=8, fill=fill,
                         outline=(16, 80, 50), width=3)
-    center(d, (x1 + x2) / 2, cy("g") - 32, title, bold(20), (20, 90, 58))
+    center(d, (x1 + x2) / 2 + title_dx, cy("g") - 32, title, bold(20), (20, 90, 58))
     for i, lab in enumerate(top_pins):
         x = cx(col + i)
         d.ellipse([x - 9, cy("f") - 9, x + 9, cy("f") + 9], fill=GOLD)

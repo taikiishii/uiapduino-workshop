@@ -34,13 +34,16 @@ def draw(two):
     board(d)
     mcu(d)
     dip(d, DC, ["VCC", "MODE", "APHASE", "AENBL", "BPHASE", "BENBL"],
-                ["VM", "AOUT1", "AOUT2", "BOUT1", "BOUT2", "GND"])
+                ["VM", "AOUT1", "AOUT2", "BOUT1", "BOUT2", "GND"],
+                title_dx=52)     # VCC・MODE の赤線の端点をよける
 
     # 電源と MODE
     wire(d, (1, "j"), (1, "+t"), RED)            # ボードの5V → 上の ＋レール
     wire(d, (2, "i"), (2, "-t"), BLACK)          # ボードのGND → 上の −レール
-    wire(d, (DC, "h"), (DC, "+t"), RED)          # VCC  → ＋レール
-    wire(d, (DC + 1, "i"), (DC + 1, "+t"), RED)  # MODE → ＋レール（HIGHに固定）
+    # 端点は g 行まで下ろす。h・i 行は合図の線が通っていて、そこで
+    # 止めると赤い丸（端点）が線の下に隠れてしまう。
+    wire(d, (DC, "g"), (DC, "+t"), RED)          # VCC  → ＋レール
+    wire(d, (DC + 1, "g"), (DC + 1, "+t"), RED)  # MODE → ＋レール（HIGHに固定）
 
     # モーターA の合図
     wire(d, (9, "h"), (DC + 2, "h"), YELLOW)     # 7番  → APHASE（向き）
