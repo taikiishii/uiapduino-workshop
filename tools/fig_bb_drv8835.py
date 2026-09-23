@@ -47,7 +47,9 @@ def draw(two):
     wire(d, (5, "i"), (DC + 3, "i"), ORANGE)     # 12番 → AENBL （速さ・PWM）
     if two:                                      # モーターB の合図
         wire(d, (10, "h"), (DC + 4, "h"), GREEN) # 9番  → BPHASE（向き）
-        wire(d, (6, "j"), (DC + 5, "h"), BLUE)   # 6番  → BENBL （速さ・PWM）
+        # 上に使える行（h・i・j）は3本ぶんしかないので、青だけ h 行を緑と
+        # 共有する。重ならないよう、上へふくらませてよける。
+        wire(d, (6, "h"), (DC + 5, "h"), BLUE, arc=-46)  # 6番 → BENBL（速さ・PWM）
 
     # 力の線
     wire(d, (DC, "a"), (DC, "+b"), RED)                # VM  → 下の ＋レール
