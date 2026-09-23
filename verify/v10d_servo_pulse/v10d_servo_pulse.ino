@@ -7,6 +7,7 @@ void setup() {
 }
 
 void loop() {
-  analogWrite(LED, analogRead(CDS) / 4);
-  delay(10);
+  int v = analogRead(CDS);
+  digitalWrite(LED, HIGH); delay(v / 4);
+  digitalWrite(LED, LOW);  delay(v / 4);
 }
