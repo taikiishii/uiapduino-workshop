@@ -108,7 +108,7 @@ void loop() {
 こんどは値を**数字**として読んでみよう。
 
 1. 右のプログラムを書きこむ
-2. **基板のオレンジLED**が点滅する回数を数える
+2. LEDが**点滅する回数**を数える
 3. 回数 × 100 が、だいたいの値
 
 > 明るいと **8回**、おおうと **1回** くらいになるよ。
@@ -117,7 +117,7 @@ void loop() {
 
 ```cpp `e1_kazu` 値を数で読む
 const int CDS = A2;
-const int LED = 2;    // 基板のオレンジLED
+const int LED = 5;
 
 void setup() {
   pinMode(LED, OUTPUT);
