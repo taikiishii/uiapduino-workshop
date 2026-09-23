@@ -1,23 +1,17 @@
-const int SERVO = 5;
-
-void servoPulse(int us) {        // パルスを1回おくる
-  digitalWrite(SERVO, HIGH);
-  delayMicroseconds(us);         // 600〜2400 で角度がきまる
-  digitalWrite(SERVO, LOW);
-  delay(20);                     // 20msごと ＝ 1秒に50回
-}
-
-void muku(int kakudo) {          // その角度をむく
-  int us = map(kakudo, 0, 180, 600, 2400);
-  for (int i = 0; i < 50; i++) servoPulse(us);
-}
+const int AIN1 = 12;  // どちらも PWM が使えるピン
+const int AIN2 = 0;
 
 void setup() {
-  pinMode(SERVO, OUTPUT);
+  pinMode(AIN1, OUTPUT);
+  pinMode(AIN2, OUTPUT);
+  analogWriteResolution(8);
 }
 
 void loop() {
-  muku(0);      // 0度をむく
-  muku(90);     // まんなか
-  muku(180);    // 180度
+  analogWrite(AIN1, 200);  digitalWrite(AIN2, LOW);   // 正転
+  delay(2000);
+  digitalWrite(AIN1, LOW); analogWrite(AIN2, 200);    // 逆転
+  delay(2000);
+  digitalWrite(AIN1, LOW); digitalWrite(AIN2, LOW);   // 停止
+  delay(1000);
 }
