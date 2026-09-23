@@ -29,7 +29,7 @@ dip(d, DC, ["VCC", "MODE", "AIN1", "AIN2", "BIN1", "BIN2"],
 # ── 合図と電源（上がわ）。行を分けて平行に走らせる ──────────
 wire(d, (1, "h"), (DC,     "h"), RED)      # 5V      → VCC
 wire(d, (5, "i"), (DC + 2, "i"), ORANGE)   # 12番(A3) → AIN1
-wire(d, (7, "j"), (DC + 3, "j"), YELLOW)   # 0番(A1)  → AIN2
+wire(d, (6, "j"), (DC + 3, "j"), YELLOW)   # 6番(A2)  → AIN2
 wire(d, (DC + 1, "g"), (28, "g"), BLACK)   # MODE → GND（IN/INモード）
 wire(d, (28, "g"), (28, "-t"), BLACK)
 wire(d, (2, "j"), (2, "-t"), BLACK)        # ボードのGND → 上の −レール
