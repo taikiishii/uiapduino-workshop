@@ -1218,7 +1218,15 @@ i3 Lチカ ─→ b1 外付けLED ─→ b3 PWM ────┐
       （ロジック電源 2〜7V なので 5V は範囲内。モータ電源 2〜11V・1回路1.5A）
       教材は 3V3 と書いていたので修正した（`e5_motor` と `bb_drv8835.png`）。
       <https://akizukidenshi.com/goodsaffix/AE-DRV8835-S_20210526.pdf>
-      - [ ] 端子名の並びと `MODE`=GND で IN/IN になることは実機で確認する
+      - [x] ✅ **端子の並びを資料で確定**（2026-09-23）。ピン番号は
+            `1 VM / 2 AOUT1 / 3 AOUT2 / 4 BOUT1 / 5 BOUT2 / 6 GND /
+             7 BIN2 / 8 BIN1 / 9 AIN2 / 10 AIN1 / 11 MODE / 12 VCC`。
+            12ピンDIP なので **1番の向かいが 12番**。横向きにさすと
+            上の行 `VCC MODE AIN1 AIN2 BIN1 BIN2`／
+            下の行 `VM AOUT1 AOUT2 BOUT1 BOUT2 GND` になる。
+            ⚠ **図はこれと上下が入れかわった鏡像だった**ので描き直した。
+            実物写真とも一致を確認（写真の左列＝7〜12、右列＝6〜1）。
+      - [ ] `MODE`=GND で IN/IN になることは実機で確認する
 
 ### 第3段階：発展編（`e`）
 

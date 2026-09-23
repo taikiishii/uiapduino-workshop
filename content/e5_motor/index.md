@@ -84,7 +84,7 @@ wip: 写真まち
 
 :::
 
-![合図の線は4本とも上がわ。力の線は下がわ](image/index/bb_drv8835.png)
+![上の行が合図（VCC・MODE・AIN1・AIN2）、下の行が力（VM・AOUT・GND）](image/index/bb_drv8835.png)
 
 ---
 
