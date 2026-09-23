@@ -1,25 +1,23 @@
-const int TRIG = 9;
-const int ECHO = 7;
-const int LED  = 5;
+const int SERVO = 5;
 
-int kyori() {                    // きょりを cm ではかる
-  digitalWrite(TRIG, HIGH); delayMicroseconds(10); digitalWrite(TRIG, LOW);
-  int w = 0;
-  while (digitalRead(ECHO) == LOW) { if (++w > 600) return 999; }
-  int n = 0;
-  while (digitalRead(ECHO) == HIGH && n < 600) {
-    delayMicroseconds(50);       // 実測で 1回 ＝ 1cm
-    n++;
-  }
-  return n - 2;                  // 数えた回数 ＝ ほぼ cm
+void servoPulse(int us) {        // パルスを1回おくる
+  digitalWrite(SERVO, HIGH);
+  delayMicroseconds(us);         // 600〜2400 で角度がきまる
+  digitalWrite(SERVO, LOW);
+  delay(20);                     // 20msごと ＝ 1秒に50回
+}
+
+void muku(int kakudo) {          // その角度をむく
+  int us = map(kakudo, 0, 180, 600, 2400);
+  for (int i = 0; i < 50; i++) servoPulse(us);
 }
 
 void setup() {
-  pinMode(TRIG, OUTPUT);
-  pinMode(ECHO, INPUT);
-  pinMode(LED, OUTPUT);
+  pinMode(SERVO, OUTPUT);
 }
+
 void loop() {
-  digitalWrite(LED, kyori() < 20 ? HIGH : LOW);
-  delay(100);
+  muku(0);      // 0度をむく
+  muku(90);     // まんなか
+  muku(180);    // 180度
 }
