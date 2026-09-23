@@ -7,8 +7,8 @@ void setup() {
 
 void loop() {
   int v = analogRead(SENSOR);
-  float volt = v * 5.0 / 1024;
-  float t = (volt - 0.5) * 100;
-  digitalWrite(LED, t > 38 ? HIGH : LOW);
+  float mv = v * 5000.0 / 1024;
+  float t = (mv - 400) / 19.5;
+  digitalWrite(LED, t > 28 ? HIGH : LOW);
   delay(200);
 }
