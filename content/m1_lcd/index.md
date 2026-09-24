@@ -8,7 +8,6 @@ color: c1
 nav_title: ① 文字を表示しよう（LCD）
 card_title: 文字を表示しよう（LCD）
 desc: 16文字×2行の画面に、文字や数を出そう。はじめてライブラリを使うよ。
-wip: 写真まち
 ---
 
 {cover}
@@ -98,13 +97,13 @@ Arduino IDE の**ライブラリマネージャ**から入れるよ。
 
 1. 左の**本のマーク**をクリック
 2. 「**LiquidCrystal I2C**」で検索
-3. 作者が **Frank de Brabander** のものを「インストール」
+3. 作者に **Frank de Brabander** とあるものを「インストール」
 
 > ⚠ 「互換性がないかもしれません」という**警告**が出るけど、そのまま書きこめるよ。
 
 :::
 
-> 📷 ライブラリマネージャで「LiquidCrystal I2C」を検索した画面
+![本のマークを押して検索。LiquidCrystal_I2C を入れる](image/index/lib_manager.png)
 
 ---
 
