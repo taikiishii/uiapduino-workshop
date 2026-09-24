@@ -63,7 +63,7 @@ void loop() {
   lcd.print(" C   ");
 #elif TEST == 3
   long mv = analogRead(A2) * 5000L / 1024;
-  int t10 = (mv - 400) * 100 / 195;     // 0.1℃ 単位（19.5 で割る＝×100÷195 ×… の代わり）
+  int t10 = (mv - 400) * 100 / 195;     // 0.1℃ 単位。÷19.5 ×10 を、整数で ×100 ÷195 にした
   lcd.print(t10 / 10);
   lcd.print(".");
   lcd.print(t10 % 10);
