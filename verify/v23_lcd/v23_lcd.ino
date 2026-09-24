@@ -1,7 +1,7 @@
 /*
  * v23_lcd  ---  検証㉓：LCD 1602 のライブラリがこのボードで使えるか
  *
- * 先に v22_i2cscan でアドレスを確かめておくこと（0x3F なら下を書きかえる）。
+ * 先に v22_i2cscan でアドレスを確かめておくこと（0x27 なら下を書きかえる）。
  *
  * 確かめること
  *   1. ライブラリ「LiquidCrystal I2C」（作者 Frank de Brabander）が
@@ -27,7 +27,7 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);   // アドレス・16文字・2行
+LiquidCrystal_I2C lcd(0x3F, 16, 2);   // アドレス・16文字・2行（手元の LCD は 0x3F だった）
 
 int n = 0;
 

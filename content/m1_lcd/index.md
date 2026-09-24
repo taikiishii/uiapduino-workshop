@@ -117,7 +117,7 @@ Arduino IDE の**ライブラリマネージャ**から入れるよ。
 3. `"Hello!"` を変えて、好きな文字を出す
 
 > 出せるのは**英数字と記号**。ひらがな・漢字は出ないよ。
-> ⚠ `0x27` は LCD の**アドレス**（住所）。出ないときは `0x3F` にしてみよう。
+> ⚠ `0x3F` は LCD の**アドレス**（住所）。出ないときは `0x27` にしてみよう。
 
 :::
 
@@ -125,7 +125,7 @@ Arduino IDE の**ライブラリマネージャ**から入れるよ。
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);  // アドレス・16文字・2行
+LiquidCrystal_I2C lcd(0x3F, 16, 2);  // アドレス・16文字・2行
 
 void setup() {
   lcd.init();           // LCD を使いはじめる
@@ -144,7 +144,7 @@ void loop() {
 
 - **光っているのに文字が出ない** → 裏の**青いつまみ**を小さなドライバーで回す（文字の濃さ）
 - **光らない** → 裏の「**LED**」の黒いジャンパーがささっているか見る
-- **まったく反応しない** → 4本の線と、アドレス（`0x27`／`0x3F`）を確かめる
+- **まったく反応しない** → 4本の線と、アドレス（`0x3F`／`0x27`）を確かめる
 
 > いちばん多いのは**青いつまみ**。買ったままだと、文字がうすくて見えないことがよくあるよ。
 
@@ -168,7 +168,7 @@ LCD なら、**数をそのまま**表示できる。
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x3F, 16, 2);
 int n = 0;
 
 void setup() {
@@ -221,7 +221,7 @@ LCD はそのままで、**つまみ**を足すよ。
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LiquidCrystal_I2C lcd(0x3F, 16, 2);
 const int VR = A2;
 
 void setup() {
