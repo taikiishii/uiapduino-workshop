@@ -8,7 +8,7 @@ color: c1
 nav_title: ① 文字を表示しよう（LCD）
 card_title: 文字を表示しよう（LCD）
 desc: 16文字×2行の画面に、文字や数を出そう。はじめてライブラリを使うよ。
-wip: 実機確認まち
+wip: 写真まち
 ---
 
 {cover}
