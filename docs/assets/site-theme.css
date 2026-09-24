@@ -18,5 +18,6 @@
 .s-basic .section-line{ background:linear-gradient(90deg,#ffd98a,#a7e3a7,#9fd8f0); }
 .s-ctrl .section-line{ background:linear-gradient(90deg,#9fd8f0,#a8b6ff,#c9b3e8); }
 .s-adv .section-line{ background:linear-gradient(90deg,#c9b3e8,#ffcf5c,#ff8a80); }
+.s-ext .section-line{ background:linear-gradient(90deg,#ff8a80,#9fd8f0,#ff8a80); }
 .s-project .section-line{ background:linear-gradient(90deg,#ff8a80,#ffd180,#a5d6a7); }
 .s-appendix .section-line{ background:linear-gradient(90deg,#cfd8dc,#b0bec5); }
