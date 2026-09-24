@@ -1,11 +1,11 @@
 ---
-id: x8
+id: x9
 slug: handout
 section: 付録
 emoji: 📄
-num: 8
-color: c3
-nav_title: ⑧ 配布用 1枚紙
+num: 9
+color: c4
+nav_title: ⑨ 配布用 1枚紙
 card_title: 配布用 1枚紙
 desc: 当日くばる紙。教材のQRコードと、書きこみの手順だけを1ページに。
 ---

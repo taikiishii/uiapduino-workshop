@@ -30,7 +30,7 @@
 - 実機で確かめた値と注意点 … [CURRICULUM.md](CURRICULUM.md) §6
 - 実機検証用スケッチ … `verify/`（教材ではない。公開しない）
 
-**公式図どおりに使えない点・コアの不具合は [付録⑨](content/x9_pitfalls/index.md) にまとめてある。**
+**公式図どおりに使えない点・コアの不具合は [付録⑩](content/x10_pitfalls/index.md) にまとめてある。**
 
 とくに間違えやすい点：
 
