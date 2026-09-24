@@ -1,47 +1,38 @@
-// v19_enbl … AENBL（12番）の PWM が安定しているかを、LEDだけで見る
+// v20_nopwm … PWM を使わずに、モーターを正転・逆転させる
 //
-// 【これまでにわかったこと】
-//   ・配線は正しい（AIN1=APHASE・AIN2=AENBL。TI・秋月とも一致）
-//   ・7番の PWM 残りではない（9番に移しても同じ＝TEST3）
-//   ・明示的に analogWrite(APHASE,0) しても同じ（TEST2）
-//   ・過電流保護ではない（弱いまま2秒つづくので、1ms 周期の保護では説明できない）
-//   ・GND は共通（モーター電源の − と マイコンの GND はつながっている）
-//   ・モーター電源はモーター専用の別USB電源（ボードの5Vピンは経由していない）
+// 【これまで】
+//   ・v19：12番の PWM は安定していた（LED が 2秒点灯・0.5秒消灯を
+//     きちんとくりかえした）。→ マイコンの出力は指示どおり
+//   ・向き（APHASE）・GND・配線は白
 //
-// 【決め手になった観察】
-//   「リセット後、最初は弱い → すぐ強い（同じ向き）→ 強い逆向き → 弱い正回転」
-//   プログラムは駆動を2回しか指示していないのに、動きが3つ以上ある。
-//   しかも **1回の指示の途中で強さが変わっている**。
-//   指示が一定なのに強さが変わるなら、変わっているのは **AENBL の PWM のほう**。
+// 【この検証】AENBL を PWM ではなく、ただの HIGH／LOW で動かす。
+//   ＝ いつも全力。PWM による電流のオン・オフが無くなる。
 //
-// 【この検証】モーターを外し、**12番と GND の間にLEDと抵抗**をつないで、
-//   明るさだけを見る。機械の要素（摩擦・慣性）を全部とりのぞいて、
-//   電気だけを観察する。
+//   ・正転も逆転も力強い → PWM のオン・オフと電源（別USB電源）の相性が原因。
+//     USB 電源やモバイルバッテリーは、急な電流の変化で保護が働き、
+//     電圧を落としたり出力を止めたりすることがある。
+//   ・まだ片方が弱い      → PWM は無関係。モーター自身か電源の容量。
 //
-//   ★ モータードライバは外す（または VM の電池を外す）こと。
-//   ★ LED は 12番 →抵抗→ LED →GND。
-//
-// 【見かた】
-//   ・ずっと同じ明るさ                → PWM は安定。原因は別
-//   ・明るさが途中で変わる／ちらつく  → PWM が不安定。これが原因
-//   ・だんだん暗くなる                → 電源の垂下
+// ★ このスケッチでは 12番に analogWrite を一度も使わない。
+//   （このコアは analogWrite と digitalWrite を同じピンに混ぜると壊れる）
+// ★ 書きこんだあと、念のため USB を抜き差ししてから見る。
+// 配線は e5 のまま（APHASE=7・AENBL=12）。
 
-const int AENBL = 12;
+const int APHASE = 7;
+const int AENBL  = 12;
 
 void setup() {
+  pinMode(APHASE, OUTPUT);
   pinMode(AENBL, OUTPUT);
-  analogWriteResolution(8);
 }
 
 void loop() {
-  // e5 とまったく同じ時間の流れで、AENBL だけを動かす。
-  // 向き（APHASE）は一切さわらない。
-  analogWrite(AENBL, 200);
+  digitalWrite(APHASE, HIGH); digitalWrite(AENBL, HIGH);  // 片方向・全力
   delay(2000);
-  analogWrite(AENBL, 0);
+  digitalWrite(AENBL, LOW);                               // 止める
   delay(500);
-  analogWrite(AENBL, 200);
+  digitalWrite(APHASE, LOW);  digitalWrite(AENBL, HIGH);  // もう片方・全力
   delay(2000);
-  analogWrite(AENBL, 0);
+  digitalWrite(AENBL, LOW);
   delay(500);
 }
