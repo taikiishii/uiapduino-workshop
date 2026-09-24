@@ -1,65 +1,47 @@
-// v18_reverse … 逆転が弱い原因をさがす（3とおりを順に見せる）
+// v19_enbl … AENBL（12番）の PWM が安定しているかを、LEDだけで見る
 //
-// 【症状】1ループで **3つの動き**が見える：
-//     ① 正方向に強く一瞬   ② 逆方向に強く2秒   ③ 正方向に弱く2秒
-//   プログラムは2回しか駆動を指示していないのに、動きが3つある。
+// 【これまでにわかったこと】
+//   ・配線は正しい（AIN1=APHASE・AIN2=AENBL。TI・秋月とも一致）
+//   ・7番の PWM 残りではない（9番に移しても同じ＝TEST3）
+//   ・明示的に analogWrite(APHASE,0) しても同じ（TEST2）
+//   ・過電流保護ではない（弱いまま2秒つづくので、1ms 周期の保護では説明できない）
+//   ・GND は共通（モーター電源の − と マイコンの GND はつながっている）
+//   ・モーター電源はモーター専用の別USB電源（ボードの5Vピンは経由していない）
 //
-// 【わかっていること】
-//   ・7番の電圧は 正転中 0V／逆転中 5V。ボードは既定5V動作なので
-//     どちらも正常な LOW／HIGH に見える。
-//     ⚠ ただしテスターは**平均値**を読むので、PWM が出ていても
-//       デューティ次第で 0V／5V に近い値に見えることがある。
-//   ・配線は正しい（AIN1=APHASE・AIN2=AENBL。TI・秋月とも一致）。
-//   ・v04_pwm_scan は **7番にも analogWrite している**。
-//   ・CURRICULUM の教訓：このボードでは
-//     **analogWrite と digitalWrite を同じピンに混ぜない**。
-//     このコアには turnOffPWM が無く、一度 PWM を出したピンは
-//     digitalWrite では戻らない（＝ PWM が残る）。
+// 【決め手になった観察】
+//   「リセット後、最初は弱い → すぐ強い（同じ向き）→ 強い逆向き → 弱い正回転」
+//   プログラムは駆動を2回しか指示していないのに、動きが3つ以上ある。
+//   しかも **1回の指示の途中で強さが変わっている**。
+//   指示が一定なのに強さが変わるなら、変わっているのは **AENBL の PWM のほう**。
 //
-// 【仮説】7番に PWM が残っていて、APHASE が「途中の電圧」になっている。
-//   向きが定まらないので、弱くなったり一瞬だけ強く回ったりする。
+// 【この検証】モーターを外し、**12番と GND の間にLEDと抵抗**をつないで、
+//   明るさだけを見る。機械の要素（摩擦・慣性）を全部とりのぞいて、
+//   電気だけを観察する。
 //
-// 【使い方】TEST を 1 → 2 → 3 と替えて、それぞれ書きこむ。
-//   ★ 書きこんだあと、かならず **USBを抜き差し（電源を入れ直す）**。
-//      リセットボタンでは PWM が残ったままのことがある。
+//   ★ モータードライバは外す（または VM の電池を外す）こと。
+//   ★ LED は 12番 →抵抗→ LED →GND。
+//
+// 【見かた】
+//   ・ずっと同じ明るさ                → PWM は安定。原因は別
+//   ・明るさが途中で変わる／ちらつく  → PWM が不安定。これが原因
+//   ・だんだん暗くなる                → 電源の垂下
 
-#define TEST 1
-
-const int APHASE = 7;
-const int AENBL  = 12;
+const int AENBL = 12;
 
 void setup() {
-#if TEST == 3
-  // ③ 7番を使わず、9番（BPHASE 用の予備）に APHASE を移す
-  //    配線も 7番 → 9番 に挿し替えること。
-  //    これで直れば、原因は「7番に残った PWM」で確定。
-  pinMode(9, OUTPUT);
-#else
-  pinMode(APHASE, OUTPUT);
-#endif
   pinMode(AENBL, OUTPUT);
   analogWriteResolution(8);
-
-#if TEST == 2
-  // ② 7番の PWM を明示的に止めてから digital に戻す
-  analogWrite(APHASE, 0);
-  pinMode(APHASE, OUTPUT);
-#endif
 }
 
-#if TEST == 3
-  #define DIR 9
-#else
-  #define DIR APHASE
-#endif
-
 void loop() {
-  digitalWrite(DIR, HIGH); analogWrite(AENBL, 200);   // 片方向
-  delay(2000);
-  analogWrite(AENBL, 0);                              // 止める
-  delay(2000);
-  digitalWrite(DIR, LOW);  analogWrite(AENBL, 200);   // もう片方
+  // e5 とまったく同じ時間の流れで、AENBL だけを動かす。
+  // 向き（APHASE）は一切さわらない。
+  analogWrite(AENBL, 200);
   delay(2000);
   analogWrite(AENBL, 0);
+  delay(500);
+  analogWrite(AENBL, 200);
   delay(2000);
+  analogWrite(AENBL, 0);
+  delay(500);
 }
