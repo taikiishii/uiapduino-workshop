@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>④ サーボモーターを動かそう — UIAPduino ワークショップ</title>
-<link rel="stylesheet" href="../assets/deck.css">
-<link rel="stylesheet" href="../assets/site-theme.css">
-</head>
-<body>
+---
+id: e5
+slug: servo
+section: 発展編
+emoji: 🦾
+num: 5
+color: c5
+nav_title: ⑤ サーボモーターを動かそう
+card_title: サーボモーターを動かそう
+desc: 角度を指定してピタッと止まるモーター。ロボットの腕やしっぽに使えるよ。
+wip: 写真まち
+---
 
-<div class="toolbar">
-  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
-  <span class="title">④ サーボモーターを動かそう</span>
-  <span class="spacer"></span>
-  <button id="btn-present">▶ 発表モード</button>
-  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
-</div>
-
-<div class="deck" id="deck">
-  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
-</div>
-
-<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
-<script type="text/markdown" id="deck-source">
 {cover}
-{qr: qr.svg}
-# ④ サーボモーターを動かそう
+# ⑤ サーボモーターを動かそう
 
 角度を指定して動かす
 
@@ -125,7 +111,7 @@
 
 :::
 
-```cpp `e4_servo` サーボを動かす
+```cpp `e5_servo` サーボを動かす
 const int SERVO = 5;
 
 void servoPulse(int us) {        // パルスを1回おくる
@@ -157,7 +143,7 @@ void muku(int kakudo) {          // その角度をむく
 
 :::
 
-```cpp `e4_servo` につづけて書く
+```cpp `e5_servo` につづけて書く
 void setup() {
   pinMode(SERVO, OUTPUT);
 }
@@ -190,9 +176,3 @@ void loop() {
 2. `for` を使って、0度から180度まで**ゆっくり**動かす
 3. つまみ（b4）で角度を決められるようにする
 4. e3 の距離センサーと組み合わせて「**近づくとしっぽがふれる**」
-</script>
-
-<script src="../assets/site-config.js"></script>
-<script src="../assets/deck.js"></script>
-</body>
-</html>

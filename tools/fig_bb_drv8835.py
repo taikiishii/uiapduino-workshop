@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""e5 モータードライバの配線図。2枚つくる。
+"""e6 モータードライバの配線図。2枚つくる。
 
   bb_drv8835.png … モーターA だけ（本編）
   bb_2motor.png  … モーターB を足す（ロボットカー）
@@ -74,7 +74,7 @@ def draw(two):
     bp, bm = battery(d, 1310, 540)
     lead(d, bp[0], bp[1], (27, "+b"), RED)
     lead(d, bm[0], bm[1], (30, "-b"), BLACK)
-    save(im, "e5_motor", "bb_2motor.png" if two else "bb_drv8835.png")
+    save(im, "e6_motor", "bb_2motor.png" if two else "bb_drv8835.png")
 
 draw(False)
 draw(True)

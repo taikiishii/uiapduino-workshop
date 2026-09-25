@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""e5 モータードライバの端子の拡大図。
+"""e6 モータードライバの端子の拡大図。
 
 配線図（bb_drv8835.png）と**同じ向き・同じ色**。
 端子は基板の**内がわ**にあり、名前はそのすぐ外に印刷されている
@@ -47,5 +47,5 @@ center(d, 670, 552, "下の行 ＝ 力（電池とモーター）", bold(22), PW
 d.rounded_rectangle([180, 612, 1160, 658], radius=10, fill=SOFT, outline=TEAL, width=3)
 middle(d, 670, 635, "丸の中の数字はピン番号。PHASE が向き、ENABLE が速さ",
        bold(20), DARKTEAL)
-save(im, "e5_motor", "drv8835_pins.png")
+save(im, "e6_motor", "drv8835_pins.png")
 print("  比 %.2f" % (1340 / 672))

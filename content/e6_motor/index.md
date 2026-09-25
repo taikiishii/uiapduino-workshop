@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>⑤ モータードライバでDCモーター — UIAPduino ワークショップ</title>
-<link rel="stylesheet" href="../assets/deck.css">
-<link rel="stylesheet" href="../assets/site-theme.css">
-</head>
-<body>
+---
+id: e6
+slug: motor
+section: 発展編
+emoji: ⚙️
+num: 6
+color: c1
+nav_title: ⑥ モータードライバでDCモーター
+card_title: モータードライバでDCモーター
+desc: モーターをぐるぐる回そう。正転・逆転・スピード調節までできるよ。
+wip: 写真まち
+---
 
-<div class="toolbar">
-  <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
-  <span class="title">⑤ モータードライバでDCモーター</span>
-  <span class="spacer"></span>
-  <button id="btn-present">▶ 発表モード</button>
-  <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
-</div>
-
-<div class="deck" id="deck">
-  <p class="deck-hint">スクロールで読めます。「発表モード」で1枚ずつ全画面表示、「印刷 / PDF」でスライド形式の配布資料になります。</p>
-</div>
-
-<!-- このファイルは build.py が content/ の Markdown から自動生成します。直接編集しないでください。 -->
-<script type="text/markdown" id="deck-source">
 {cover}
-{qr: qr.svg}
-# ⑤ モータードライバでDCモーター
+# ⑥ モータードライバでDCモーター
 
 回す・逆に回す・速さを変える
 
@@ -156,7 +142,7 @@
 
 :::
 
-```cpp `e5_motor` 正転と逆転をくりかえす
+```cpp `e6_motor` 正転と逆転をくりかえす
 const int APHASE = 7;   // 向き
 const int AENBL  = 12;  // 速さ（PWM）
 
@@ -227,7 +213,7 @@ A とまったく同じ形。**B** がついた端子を使うだけだよ。
 
 :::
 
-```cpp `e5_car` 2つのモーターで走る
+```cpp `e6_car` 2つのモーターで走る
 const int APHASE = 7,  AENBL = 12;   // 左
 const int BPHASE = 9,  BENBL = 6;    // 右
 
@@ -265,9 +251,3 @@ void loop() {
 
 >| 💪 これで発展編は修了！ 次の**拡張編**では、
 > ライブラリを使って、LCD に文字や数を出すよ。
-</script>
-
-<script src="../assets/site-config.js"></script>
-<script src="../assets/deck.js"></script>
-</body>
-</html>

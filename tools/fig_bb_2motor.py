@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""e5 ロボットカー（モーター2つ）の配線図。
+"""e6 ロボットカー（モーター2つ）の配線図。
 
 **PHASE/ENABLE モード**（MODE を HIGH）にすると、1モーターあたり
   PHASE … 向き（digitalWrite でよい）
@@ -63,4 +63,4 @@ lead(d, MX - 30, MY + 302, (DC + 4, "b"), (150, 154, 158))
 bp, bm = battery(d, 1300, 540)
 lead(d, bp[0], bp[1], (27, "+b"), RED)
 lead(d, bm[0], bm[1], (30, "-b"), BLACK)
-save(im, "e5_motor", "bb_2motor.png")
+save(im, "e6_motor", "bb_2motor.png")
