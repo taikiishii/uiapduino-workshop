@@ -169,6 +169,7 @@ https://github.com/YuukiUmeta-UIAP/board_manager_files/raw/main/package_uiap.jp_
 - **インストールでエラーが出る**→ URLが正しく貼れているか確かめる
 - **「実行できません」と出る**→ Visual C++ 再頒布可能パッケージを入れる
 - **UIAPduino が出てこない**→ IDE を閉じて開きなおす
+- **Ubuntu（Linux）を使っている**→ 付録⑩の手順で入れる
 
 > こまったら**メンターをよんでね**。
 > 💪 次はいよいよ書きこみだ！

@@ -88,12 +88,14 @@
   var LANG_LABEL = {
     cpp: "Arduino (C++)", ino: "Arduino (C++)", arduino: "Arduino (C++)", c: "Arduino (C++)",
     js: "JavaScript", javascript: "JavaScript", ts: "JavaScript", typescript: "JavaScript",
-    py: "Python", python: "Python", "": "コード"
+    py: "Python", python: "Python",
+    sh: "ターミナル", bash: "ターミナル", shell: "ターミナル", "": "コード"
   };
   var KEYWORDS = {
     cpp: /^(void|int|long|float|double|char|bool|byte|unsigned|const|static|if|else|for|while|do|switch|case|default|break|continue|return|true|false|struct|class|new|delete|sizeof|include|define)$/,
     js: /^(let|const|var|function|return|if|else|for|while|do|break|continue|new|of|in|switch|case|default|class|this|true|false|null|undefined)$/,
-    py: /^(def|return|if|elif|else|for|while|break|continue|import|from|as|in|is|and|or|not|class|with|pass|lambda|global|True|False|None)$/
+    py: /^(def|return|if|elif|else|for|while|break|continue|import|from|as|in|is|and|or|not|class|with|pass|lambda|global|True|False|None)$/,
+    sh: /^(sudo)$/
   };
   // その教材でよく出てくる関数・グループ名。青くして目立たせる。
   // 語は site.toml の [code] namespaces で決める（教材ごとに違う）。
@@ -107,12 +109,13 @@
 
   function langKey(lang) {
     if (/^(cpp|c|ino|arduino|c\+\+)$/.test(lang)) return "cpp";
+    if (/^(sh|bash|shell)$/.test(lang)) return "sh";   // ターミナルのコマンド
     return /^(py|python)$/.test(lang) ? "py" : "js";
   }
 
   // 1行を色分けする（複数行にまたがる /* */ は使わない前提の簡易版）
   function hiLine(line, lk) {
-    var re = lk === "py"
+    var re = (lk === "py" || lk === "sh")                // # がコメントになる言語
       ? /(#.*)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|(\b\d+(?:\.\d+)?\b)|([A-Za-z_][A-Za-z0-9_]*)/g
       : /(\/\/.*)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][A-Za-z0-9_$]*)/g;
     var out = "", last = 0, m;

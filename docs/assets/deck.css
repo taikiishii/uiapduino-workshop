@@ -286,6 +286,7 @@ body { background: var(--page-bg); }
 }
 .code-card[data-lang="py"] .lang { background: #bfdcf5; }
 .code-card[data-lang="cpp"] .lang { background: #ffd7a8; }
+.code-card[data-lang="sh"] .lang { background: #d6d6d6; }   /* ターミナル */
 .code-card .cap {
   flex: 1 1 auto; min-width: 0;
   font-size: .62em; font-weight: 700; color: var(--accent-dark);
