@@ -123,6 +123,7 @@ chmod +x ~/Applications/launch-arduino.sh
 
 - `.desktop` の中では `~` や `$HOME` が使えない
 - そこで `EOF` を引用符でかこまず、作るときに**自分のホームに置きかえる**
+- アイコンは AppImage の**中から取り出す**（ネットから取らない）
 
 > 登録したら、アプリの一覧に「Arduino IDE」が出ます。出ないときはログインしなおしてください。
 
@@ -130,7 +131,9 @@ chmod +x ~/Applications/launch-arduino.sh
 
 ```bash 4-2. ランチャーの項目とアイコンを作る
 mkdir -p ~/.local/share/icons ~/.local/share/applications
-wget -O ~/.local/share/icons/arduino-ide.png https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Arduino_Logo.svg/500px-Arduino_Logo.svg.png
+(cd /tmp && ~/Applications/arduino-ide_2.3.10_Linux_64bit.AppImage --appimage-extract 'usr/share/icons/*' > /dev/null)
+cp /tmp/squashfs-root/usr/share/icons/hicolor/512x512/apps/arduino-ide.png ~/.local/share/icons/
+rm -rf /tmp/squashfs-root
 cat << EOF > ~/.local/share/applications/arduino-ide.desktop
 [Desktop Entry]
 Type=Application

@@ -137,7 +137,9 @@ LED は e3 と同じ **5番**・16〜17列。作図は `tools/fig_bb_pir.py`（�
   （`99-minichlink-uiap.rules` を wget で入れる・`GROUP="plugdev"`）で確認。→ 公式の手順にした。
 - ⚠ FUSE 2 がぬけていた。AppImage には **`libfuse2t64`**（24.04 以降の名前。22.04 は `libfuse2`）が要る
   （AppImage 公式ドキュメント）。→ 手順1に足した。
-- そのほか：アイコンの URL（`512px-…`）は Wikimedia に断られる（400）ので **500px** に。
+- そのほか：アイコンは当初 Wikimedia から wget していたが、`512px-…` は 400、`500px-…` も
+  2026-10-02 に **429** で断られた（User-Agent を変えても同じ）。→ **AppImage 同梱の
+  `usr/share/icons/hicolor/512x512/apps/arduino-ide.png` を `--appimage-extract` で取り出す**ようにした。
   パスは `/home/taiki` を `$HOME` に。`dialout` は、このボードではシリアルを使わないので不要と書いた。
 - Arduino IDE は **2.3.10**（2026-06-09 公開・2026-09-27 時点の最新）。ダウンロード URL は 200 を確認。
 - コマンドを見せるため、workshop-kit の deck.js に **`bash`／`sh` の「ターミナル」表示**を足した。
