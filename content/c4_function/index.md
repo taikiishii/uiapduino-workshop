@@ -4,7 +4,7 @@ slug: function
 section: 制御編
 emoji: 🧩
 num: 4
-color: c3
+color: c4
 nav_title: ④ 配列と関数でまとめよう
 card_title: 配列と関数でまとめよう
 desc: たくさんのLEDをひとまとめに。同じ処理は関数にまとめてすっきりさせよう。

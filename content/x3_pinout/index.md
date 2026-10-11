@@ -4,7 +4,7 @@ slug: pinout
 section: 付録
 emoji: 📌
 num: 3
-color: c2
+color: c3
 nav_title: ③ ピン配置早見表
 card_title: ピン配置早見表
 desc: どのピンが何に使えるか（アナログ入力・PWM・I2C・SPI）の公式ピン配置図と早見表。

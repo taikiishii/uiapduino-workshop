@@ -4,7 +4,7 @@ slug: parts
 section: 作品編
 emoji: 🛒
 num: 3
-color: c1
+color: c3
 nav_title: ③ 材料と道具をあつめよう
 card_title: 材料と道具をあつめよう
 desc: 電子部品と工作材料の両方がいる。買うものは早めに決めよう。

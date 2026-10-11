@@ -4,7 +4,7 @@ slug: light
 section: 発展編
 emoji: 🔦
 num: 1
-color: c4
+color: c1
 nav_title: ① 光センサーで暗くなったら光る
 card_title: 光センサーで暗くなったら光る
 desc: 明るさをはかるセンサーをつないで、自動で点灯するライトを作ろう。

@@ -28,11 +28,13 @@
 }
 
 /* もくじカードの枠色（frontmatter の color:） */
-.c1{ --frame:#7fcbcd; }
-.c2{ --frame:#9ad1c2; }
-.c3{ --frame:#62b6b7; }
-.c4{ --frame:#a9c9dc; }
-.c5{ --frame:#b8d8d9; }
+.c1{ --frame:#ffb3c1; }
+.c2{ --frame:#ffd98a; }
+.c3{ --frame:#a7e3a7; }
+.c4{ --frame:#9fd8f0; }
+.c5{ --frame:#f0e08a; }
+.c6{ --frame:#ffc2a8; }
+.c7{ --frame:#c9b3e8; }
 
 /* もくじのセクションの区切り線 */
 .s-intro .section-line{ background:linear-gradient(90deg,#7fcbcd,#62b6b7); }

@@ -4,7 +4,7 @@ slug: for
 section: 制御編
 emoji: 🔁
 num: 2
-color: c3
+color: c2
 nav_title: ② くりかえし（for）
 card_title: くりかえし（for）
 desc: 同じことを何回もくりかえす書き方。LEDをじわっと光らせよう。

@@ -4,7 +4,7 @@ slug: analog
 section: 基本編
 emoji: 🎛️
 num: 4
-color: c2
+color: c4
 nav_title: ④ つまみで明るさを変えよう
 card_title: つまみで明るさを変えよう
 desc: 可変抵抗（つまみ）を回すと、LEDの明るさがぬるっと変わるようにしよう。

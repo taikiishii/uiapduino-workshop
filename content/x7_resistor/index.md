@@ -4,7 +4,7 @@ slug: resistor
 section: 付録
 emoji: 🎨
 num: 7
-color: c2
+color: c7
 nav_title: ⑦ 抵抗のカラーコードの読み方
 card_title: 抵抗のカラーコードの読み方
 desc: 抵抗についている色の帯の意味。1kΩ と 10kΩ を自分で見分けられるようになろう。

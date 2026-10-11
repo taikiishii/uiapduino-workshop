@@ -4,7 +4,7 @@ slug: ubuntu
 section: 付録
 emoji: 🐧
 num: 10
-color: c2
+color: c3
 nav_title: ⑩ Ubuntu で使う
 card_title: Ubuntu で使う
 desc: Ubuntu 26.04 に Arduino IDE 2 を入れて、ランチャーから起動し、UIAPduino に書きこめるようにする。セットアップする大人むけ。

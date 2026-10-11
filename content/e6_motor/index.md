@@ -4,7 +4,7 @@ slug: motor
 section: 発展編
 emoji: ⚙️
 num: 6
-color: c4
+color: c6
 nav_title: ⑥ モータードライバでDCモーター
 card_title: モータードライバでDCモーター
 desc: モーターをぐるぐる回そう。正転・逆転・スピード調節までできるよ。

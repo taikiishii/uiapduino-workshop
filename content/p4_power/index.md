@@ -4,7 +4,7 @@ slug: power
 section: 作品編
 emoji: 🔋
 num: 4
-color: c1
+color: c4
 nav_title: ④ 電源をどうするか
 card_title: 電源をどうするか
 desc: パソコンにつながなくても動く作品にしよう。えらび方と、ぜったいやってはいけないこと。

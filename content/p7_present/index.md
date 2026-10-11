@@ -4,7 +4,7 @@ slug: present
 section: 作品編
 emoji: 🎤
 num: 7
-color: c1
+color: c7
 nav_title: ⑦ 発表しよう
 card_title: 発表しよう
 desc: なにを作ったか・どう動くか・くふうしたところ。動かして見せるのがいちばん。

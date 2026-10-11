@@ -4,7 +4,7 @@ slug: mylib
 section: 付録
 emoji: 🧰
 num: 6
-color: c2
+color: c6
 nav_title: ⑥ ライブラリを作ろう
 card_title: ライブラリを作ろう
 desc: 自分でライブラリを作って、LCD をメモリ半分で動かそう。中身まで知りたい人へ。

@@ -4,7 +4,7 @@ slug: blink
 section: 導入編
 emoji: 💡
 num: 3
-color: c1
+color: c3
 nav_title: ③ はじめてのLチカ
 card_title: はじめてのLチカ
 desc: 基板のLEDをチカチカさせよう。書き込みのしかたと、プログラムの形をおぼえる。

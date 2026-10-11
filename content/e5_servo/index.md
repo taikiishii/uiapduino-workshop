@@ -4,7 +4,7 @@ slug: servo
 section: 発展編
 emoji: 🦾
 num: 5
-color: c4
+color: c5
 nav_title: ⑤ サーボモーターを動かそう
 card_title: サーボモーターを動かそう
 desc: 角度を指定してピタッと止まるモーター。ロボットの腕やしっぽに使えるよ。

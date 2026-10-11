@@ -4,7 +4,7 @@ slug: variable
 section: 制御編
 emoji: 📦
 num: 1
-color: c3
+color: c1
 nav_title: ① 変数をつかおう
 card_title: 変数をつかおう
 desc: 数をしまっておく「箱」＝変数。名前をつけると、プログラムがぐっと読みやすくなる。
