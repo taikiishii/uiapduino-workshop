@@ -34,7 +34,6 @@ header{
   position:relative;
   background:linear-gradient(135deg,var(--accent-bright),var(--accent-dark));
   color:#fff; padding:46px 20px 42px; text-align:center;
-  border-bottom-left-radius:26px; border-bottom-right-radius:26px;
 }
 header h1{ margin:0 0 10px; font-size:32px; letter-spacing:.02em; }
 /* 教材のロゴ画像を見出しの頭に置くとき（site.toml の logo） */
@@ -43,7 +42,6 @@ header h1 .logo{ height:1.55em; width:auto; vertical-align:middle;
 header p{ margin:0; opacity:.92; font-size:15px; }
 header::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
-  border-bottom-left-radius:26px; border-bottom-right-radius:26px;
   background:var(--rainbow);
 }
 
