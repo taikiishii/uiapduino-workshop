@@ -12,18 +12,32 @@ logo         = "board.png"                # 見出しの頭に出すボードの
 base_url     = "https://taikiishii.github.io/uiapduino-workshop/"
 title_suffix = " — UIAPduino ワークショップ"
 
-accent        = "#00a99d"
-accent_dark   = "#007c74"
-accent_bright = "#00b5a8"
+# Arduino IDE 2 の画面の色にそろえる（2026-10-11。IDE のスクリーンショットから色を取った）
+#   #008184 … ボタンの字・タブの下線 ／ #006d70 … 上と下の帯 ／ #005b5e … 進行バー
+accent        = "#008184"
+accent_dark   = "#006d70"
+accent_bright = "#008184"   # もくじの帯は #008184 → #006d70
 
 # ---- もくじカードの枠色 ---------------------------------------------------
 # frontmatter の color: がこのキーを引く。c1〜c5 をぐるぐる使う。
 [palette]
-c1 = "#ffb3c1"
-c2 = "#ffd98a"
-c3 = "#a7e3a7"
-c4 = "#9fd8f0"
-c5 = "#c9b3e8"
+# IDE の青緑の濃淡。となりのカードと見分けがつくよう、色みを少しずつずらす
+c1 = "#7fcbcd"   # IDE の丸ボタン
+c2 = "#9ad1c2"
+c3 = "#62b6b7"   # IDE の丸ボタンの印
+c4 = "#a9c9dc"
+c5 = "#b8d8d9"
+
+# ---- 飾りの色（Arduino IDE 2 の雰囲気にそろえる）----------------------------
+[theme]
+bg         = "#f7f9f9"                                   # IDE のサイドバー
+bg_dots    = ["rgba(0,129,132,.07)", "rgba(0,109,112,.05)"]
+rainbow    = ["#005b5e", "#006d70", "#008184", "#62b6b7", "#7fcbcd"]
+slide_frames = ["#7fcbcd", "#9ad1c2", "#62b6b7", "#a9c9dc", "#b8d8d9"]   # カードの枠と同じ5色
+cover_glow = ["#e9f2f2", "#ecf1f1"]                      # IDE のボタンの地・左の帯
+hint_bg    = "#e9f2f2"
+qr_frame   = "#7fcbcd"
+qr_dark    = "#005b5e"                                   # 白地で読める濃さ
 
 # ---- もくじのセクション ---------------------------------------------------
 # 並べた順に表示される。name は frontmatter の section: と一致させる。
@@ -33,42 +47,42 @@ name  = "導入編"
 cls   = "s-intro"
 title = "🔰 導入編"
 sub   = "Arduino と UIAPduino をはじめよう"
-line  = ["#ffb3c1", "#ffd98a"]
+line  = ["#7fcbcd", "#62b6b7"]
 
 [[sections]]
 name  = "基本編"
 cls   = "s-basic"
 title = "🔌 基本編"
 sub   = "LED・スイッチ・つまみ　＜ここまでで半日コース＞"
-line  = ["#ffd98a", "#a7e3a7", "#9fd8f0"]
+line  = ["#62b6b7", "#008184"]
 
 [[sections]]
 name  = "制御編"
 cls   = "s-ctrl"
 title = "🔁 制御編"
 sub   = "くりかえしと条件でプログラムを組み立てる　＜ここまでで1日コース＞"
-line  = ["#9fd8f0", "#a8b6ff", "#c9b3e8"]
+line  = ["#008184", "#006d70"]
 
 [[sections]]
 name  = "発展編"
 cls   = "s-adv"
 title = "🚀 発展編"
 sub   = "センサーで感じて、モーターで動かす"
-line  = ["#c9b3e8", "#ffcf5c", "#ff8a80"]
+line  = ["#006d70", "#005b5e"]
 
 [[sections]]
 name  = "拡張編"
 cls   = "s-ext"
 title = "🧩 拡張編"
 sub   = "ライブラリを使って、部品をふやす"
-line  = ["#ff8a80", "#9fd8f0", "#ff8a80"]
+line  = ["#005b5e", "#008184"]
 
 [[sections]]
 name  = "作品編"
 cls   = "s-project"
 title = "🛠 作品編"
 sub   = "自分だけの作品を、構想から発表まで　＜複数日コース＞"
-line  = ["#ff8a80", "#ffd180", "#a5d6a7"]
+line  = ["#008184", "#7fcbcd"]
 
 [[sections]]
 name  = "付録"

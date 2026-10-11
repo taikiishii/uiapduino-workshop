@@ -1,23 +1,44 @@
 /* このファイルは build が site.toml から生成します。直接編集しないでください。 */
 
 :root{
-  --accent:#00a99d;
-  --accent-dark:#007c74;
-  --accent-bright:#00b5a8;
+  --accent:#008184;
+  --accent-dark:#006d70;
+  --accent-bright:#008184;
+}
+
+/* 共通部品の飾りの色（site.toml の [theme]） */
+:root{
+  --bg:#f7f9f9;
+  --bg-dot-1:rgba(0,129,132,.07);
+  --bg-dot-2:rgba(0,109,112,.05);
+  --rainbow:linear-gradient(90deg,#005b5e,#006d70,#008184,#62b6b7,#7fcbcd);
+  --cover-glow-1:#e9f2f2;
+  --cover-glow-2:#ecf1f1;
+  --hint-bg:#e9f2f2;
+  --qr-frame:#7fcbcd;
+}
+
+/* 章ページのスライドの枠色（[theme] slide_frames を順にくり返す） */
+@media screen {
+  body:not(.mode-present) .slide:nth-of-type(5n+1){ --frame:#7fcbcd; }
+  body:not(.mode-present) .slide:nth-of-type(5n+2){ --frame:#9ad1c2; }
+  body:not(.mode-present) .slide:nth-of-type(5n+3){ --frame:#62b6b7; }
+  body:not(.mode-present) .slide:nth-of-type(5n+4){ --frame:#a9c9dc; }
+  body:not(.mode-present) .slide:nth-of-type(5n+5){ --frame:#b8d8d9; }
 }
 
 /* もくじカードの枠色（frontmatter の color:） */
-.c1{ --frame:#ffb3c1; }
-.c2{ --frame:#ffd98a; }
-.c3{ --frame:#a7e3a7; }
-.c4{ --frame:#9fd8f0; }
-.c5{ --frame:#c9b3e8; }
+.c1{ --frame:#7fcbcd; }
+.c2{ --frame:#9ad1c2; }
+.c3{ --frame:#62b6b7; }
+.c4{ --frame:#a9c9dc; }
+.c5{ --frame:#b8d8d9; }
 
 /* もくじのセクションの区切り線 */
-.s-intro .section-line{ background:linear-gradient(90deg,#ffb3c1,#ffd98a); }
-.s-basic .section-line{ background:linear-gradient(90deg,#ffd98a,#a7e3a7,#9fd8f0); }
-.s-ctrl .section-line{ background:linear-gradient(90deg,#9fd8f0,#a8b6ff,#c9b3e8); }
-.s-adv .section-line{ background:linear-gradient(90deg,#c9b3e8,#ffcf5c,#ff8a80); }
-.s-ext .section-line{ background:linear-gradient(90deg,#ff8a80,#9fd8f0,#ff8a80); }
-.s-project .section-line{ background:linear-gradient(90deg,#ff8a80,#ffd180,#a5d6a7); }
+.s-intro .section-line{ background:linear-gradient(90deg,#7fcbcd,#62b6b7); }
+.s-basic .section-line{ background:linear-gradient(90deg,#62b6b7,#008184); }
+.s-ctrl .section-line{ background:linear-gradient(90deg,#008184,#006d70); }
+.s-adv .section-line{ background:linear-gradient(90deg,#006d70,#005b5e); }
+.s-ext .section-line{ background:linear-gradient(90deg,#005b5e,#008184); }
+.s-project .section-line{ background:linear-gradient(90deg,#008184,#7fcbcd); }
 .s-appendix .section-line{ background:linear-gradient(90deg,#cfd8dc,#b0bec5); }

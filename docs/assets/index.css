@@ -10,6 +10,11 @@
   /* site-theme.css があとから読まれて上書きする。ここの値は保険。 */
   --accent:#00a99d; --accent-dark:#007c74; --accent-bright:#00b5a8;
   --ink:#1f2a2e; --muted:#5b6b70;
+  /* 飾りの色。site.toml の [theme] で上書きできる（README「教材ごとに変わるところ」） */
+  --bg:#eef8f7;
+  --bg-dot-1:rgba(0,169,157,.10); --bg-dot-2:rgba(255,159,120,.10);
+  --rainbow:linear-gradient(90deg,#ff9eb1,#ffd98a,#a0e2a0,#9fd8f0,#c9b3e8);
+  --qr-frame:#9fd8f0;
 }
 *{ box-sizing:border-box; }
 body{
@@ -17,10 +22,10 @@ body{
   font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,"Segoe UI",system-ui,sans-serif;
   color:var(--ink);
   -webkit-text-size-adjust:100%;
-  background-color:#eef8f7;
+  background-color:var(--bg);
   background-image:
-    radial-gradient(rgba(0,169,157,.10) 2px, transparent 2px),
-    radial-gradient(rgba(255,159,120,.10) 2px, transparent 2px);
+    radial-gradient(var(--bg-dot-1) 2px, transparent 2px),
+    radial-gradient(var(--bg-dot-2) 2px, transparent 2px);
   background-size:30px 30px, 30px 30px;
   background-position:0 0, 15px 15px;
 }
@@ -39,7 +44,7 @@ header p{ margin:0; opacity:.92; font-size:15px; }
 header::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
   border-bottom-left-radius:26px; border-bottom-right-radius:26px;
-  background:linear-gradient(90deg,#ff9eb1,#ffd98a,#a0e2a0,#9fd8f0,#c9b3e8);
+  background:var(--rainbow);
 }
 
 main{ max-width:940px; margin:0 auto; padding:30px 18px 70px; }
@@ -103,14 +108,14 @@ main{ max-width:940px; margin:0 auto; padding:30px 18px 70px; }
 
 /* もくじの終わりの区切り線。セクションの線と同じ形で、色は虹（ページ全体の区切り） */
 .qr-line{ margin:40px 4px 0;
-          background:linear-gradient(90deg,#ff9eb1,#ffd98a,#a0e2a0,#9fd8f0,#c9b3e8); }
+          background:var(--rainbow); }
 
 /* QRコード（このページを端末で開く）
    幅はカードの並び（.grid）とそろえる。パソコンではカード3枚ぶん、
    スマホではカード1枚ぶんになる（どちらも main の横幅いっぱい）。 */
 .qr{ display:flex; align-items:center; gap:20px; justify-content:center; flex-wrap:wrap;
      background:#fff; border-radius:20px; padding:18px 26px; margin:26px 0 6px;
-     box-shadow:0 8px 22px rgba(60,90,90,.12), inset 0 0 0 4px #9fd8f0; }
+     box-shadow:0 8px 22px rgba(60,90,90,.12), inset 0 0 0 4px var(--qr-frame); }
 .qr img{ width:132px; height:132px; display:block; }
 .qr .qr-text{ text-align:left; }
 .qr .qr-text .t{ font-weight:800; font-size:16px; margin:0 0 6px; }
