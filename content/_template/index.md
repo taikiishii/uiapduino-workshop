@@ -4,7 +4,7 @@ slug: newchapter          # フォルダ名は <id>_<slug>（例：content/e9_ne
 section: 発展編            # 導入編 / 基本編 / 制御編 / 発展編 / 拡張編 / 作品編 / 付録
 emoji: 🌡️
 num: 9                    # もくじカードの番号（セクション内の連番）
-color: c1                 # c1〜c5 をぐるぐる使う
+color: c4                 # 編ごとに同じ色（導入c1・基本c2・制御c3・発展c4・拡張c5・作品c1・付録c2）
 nav_title: ⑨ あたらしい章のタイトル
 card_title: あたらしい章
 desc: もくじカードに出る、1〜2文の説明。何ができるようになるかを書く。

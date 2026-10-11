@@ -4,7 +4,7 @@ slug: distance
 section: 発展編
 emoji: 📏
 num: 3
-color: c3
+color: c4
 nav_title: ③ ものとの距離をはかろう
 card_title: ものとの距離をはかろう
 desc: 超音波センサーで距離をはかろう。音がはね返る時間から距離がわかる。

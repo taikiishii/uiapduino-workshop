@@ -4,7 +4,7 @@ slug: buzzer
 section: 基本編
 emoji: 🔔
 num: 5
-color: c5
+color: c2
 nav_title: ⑤ 音を鳴らそう
 card_title: 音を鳴らそう
 desc: ブザーをつないで音を出そう。音の高さは「1秒間に何回ふるえるか」で決まる。

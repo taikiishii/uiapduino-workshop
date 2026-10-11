@@ -4,7 +4,7 @@ slug: library
 section: 付録
 emoji: 📚
 num: 5
-color: c5
+color: c2
 nav_title: ⑤ ライブラリを追加しよう
 card_title: ライブラリを追加しよう
 desc: ライブラリの入れかたと、入らない・動かないときの考え方。拡張編と自由制作で使う。

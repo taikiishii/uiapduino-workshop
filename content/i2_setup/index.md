@@ -4,7 +4,7 @@ slug: setup
 section: 導入編
 emoji: 🧰
 num: 2
-color: c2
+color: c1
 nav_title: ② Arduino IDE をじゅんびしよう
 card_title: Arduino IDE をじゅんびしよう
 desc: プログラムを作る道具（Arduino IDE）を入れて、UIAPduino を使えるようにしよう。

@@ -4,7 +4,7 @@ slug: lcd
 section: 拡張編
 emoji: 📟
 num: 1
-color: c1
+color: c5
 nav_title: ① 文字を表示しよう（LCD）
 card_title: 文字を表示しよう（LCD）
 desc: 16文字×2行の画面に、文字や数を出そう。はじめてライブラリを使うよ。

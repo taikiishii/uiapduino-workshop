@@ -4,7 +4,7 @@ slug: mentor
 section: 付録
 emoji: 📋
 num: 8
-color: c3
+color: c2
 nav_title: ⑧ メンター用 早見表
 card_title: メンター用 早見表
 desc: 当日メンターが手元に置く1枚。使うピン・つまずきどころ・時間の目安。

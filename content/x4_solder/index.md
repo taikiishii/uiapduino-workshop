@@ -4,7 +4,7 @@ slug: solder
 section: 付録
 emoji: 🔥
 num: 4
-color: c4
+color: c2
 nav_title: ④ ピンヘッダをはんだ付けしよう
 card_title: ピンヘッダをはんだ付けしよう
 desc: 自分でボードを買った人むけ。はんだ付けの道具・やり方・注意点。

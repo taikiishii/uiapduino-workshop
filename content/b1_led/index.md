@@ -4,7 +4,7 @@ slug: led
 section: 基本編
 emoji: 🔴
 num: 1
-color: c1
+color: c2
 nav_title: ① ブレッドボードにLEDをつなごう
 card_title: ブレッドボードにLEDをつなごう
 desc: ブレッドボードのしくみをおぼえて、自分でつないだLEDを光らせよう。

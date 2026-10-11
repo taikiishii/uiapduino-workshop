@@ -4,7 +4,7 @@ slug: pitfalls
 section: 付録
 emoji: ⚠
 num: 11
-color: c1
+color: c2
 nav_title: ⑪ 実機とコアの落とし穴
 card_title: 実機とコアの落とし穴
 desc: 公式ピン配置図どおりに使えない点と、コアの不具合。教材を作る人・改造する人むけ（技術者向け）。

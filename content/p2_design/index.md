@@ -4,7 +4,7 @@ slug: design
 section: 作品編
 emoji: 📐
 num: 2
-color: c2
+color: c1
 nav_title: ② 設計図をかこう
 card_title: 設計図をかこう
 desc: 見た目・つなぎ方・動きの順番。3枚かくと、作るときに迷わない。

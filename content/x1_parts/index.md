@@ -4,7 +4,7 @@ slug: parts
 section: 付録
 emoji: 🧾
 num: 1
-color: c1
+color: c2
 nav_title: ① 部品リストと回路の見方
 card_title: 部品リストと回路の見方
 desc: 使う部品の名前と、抵抗のカラーコード・配線図の読み方。

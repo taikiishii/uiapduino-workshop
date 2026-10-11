@@ -4,7 +4,7 @@ slug: frame
 section: 作品編
 emoji: 🦴
 num: 5
-color: c5
+color: c1
 nav_title: ⑤ 骨格をつくろう
 card_title: 骨格をつくろう
 desc: 動くものは土台が9割。よくある失敗と、材料・くっつけ方のえらび方。

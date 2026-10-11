@@ -4,7 +4,7 @@ slug: pwm
 section: 基本編
 emoji: 🌗
 num: 3
-color: c3
+color: c2
 nav_title: ③ LEDの明るさを変えよう
 card_title: LEDの明るさを変えよう
 desc: ついている・消えているだけでなく、とちゅうの明るさにしてみよう。

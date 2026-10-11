@@ -4,7 +4,7 @@ slug: temp
 section: 発展編
 emoji: 🌡️
 num: 2
-color: c2
+color: c4
 nav_title: ② 温度をはかろう
 card_title: 温度をはかろう
 desc: 温度センサーで気温をはかって、暑くなったら知らせるようにしよう。

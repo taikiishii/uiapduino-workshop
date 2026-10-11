@@ -4,7 +4,7 @@ slug: build
 section: 作品編
 emoji: 🔧
 num: 6
-color: c4
+color: c1
 nav_title: ⑥ くみたてよう
 card_title: くみたてよう
 desc: 少しずつ足して確かめる。まとめて作ると、どこが悪いか分からなくなる。
