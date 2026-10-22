@@ -98,7 +98,7 @@ Arduino の `pinMode` は **`INPUT` / `OUTPUT` / `INPUT_PULLUP`** の3つだけ�
 > 迂回策：`digitalRead()` ＋ `delayMicroseconds()` で**回数を数える**。
 > `delayMicroseconds` は SysTick を直接読む別実装なので影響を受けない。
 
->| 教材の `e3_distance` はこの方式で書いてある。20cm でも反射時間は
+>| 教材の `e4_distance` はこの方式で書いてある。20cm でも反射時間は
 >| 約1.16ms なので、`pulseIn` では原理的に足りない。
 
 ---

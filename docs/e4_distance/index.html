@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-<title>③ ものとの距離をはかろう — UIAPduino ワークショップ</title>
+<title>④ ものとの距離をはかろう — UIAPduino ワークショップ</title>
 <link rel="stylesheet" href="../assets/deck.css">
 <link rel="stylesheet" href="../assets/site-theme.css">
 </head>
@@ -12,7 +12,7 @@
 
 <div class="toolbar">
   <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
-  <span class="title">③ ものとの距離をはかろう</span>
+  <span class="title">④ ものとの距離をはかろう</span>
   <span class="spacer"></span>
   <button id="btn-present">▶ 発表モード</button>
   <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
@@ -26,7 +26,7 @@
 <script type="text/markdown" id="deck-source">
 {cover}
 {qr: qr.svg}
-# ③ ものとの距離をはかろう
+# ④ ものとの距離をはかろう
 
 音のはね返りで距離をはかる
 
@@ -121,7 +121,7 @@
 
 :::
 
-```cpp `e3_kyori` きょりをはかる
+```cpp `e4_kyori` きょりをはかる
 const int TRIG = 9;
 const int ECHO = 7;
 const int LED  = 5;
@@ -155,7 +155,7 @@ int kyori() {                    // きょりを cm ではかる
 
 :::
 
-```cpp `e3_kyori` につづけて書く
+```cpp `e4_kyori` につづけて書く
 void setup() {
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT);
@@ -190,7 +190,7 @@ void loop() {
 
 :::
 
-```cpp `e3_kyori` の loop() を書きかえる
+```cpp `e4_kyori` の loop() を書きかえる
 void loop() {
   digitalWrite(LED, kyori() < 20 ? HIGH : LOW);
   delay(100);

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""e4 人感センサー（AM312 ミニ PIR モジュール）の配線図（上から見た図）。
+"""e3 人感センサー（AM312 ミニ PIR モジュール）の配線図（上から見た図）。
 
 2026-10-11 に SB412A から差しかえた（Youmile の AM312／HC-SR312・5個入り）。
 ピンを下にして**立てて**さす。上から見ると、直径 約12mm の白いレンズ（約5穴ぶん）が
@@ -36,7 +36,7 @@ wire(d, (PC, "j"), (PC, "-t"), BLACK)          # GND  → −レール
 wire(d, (9, "i"), (PC + 1, "i"), YELLOW)       # OUT  → 7番
 wire(d, (PC + 2, "j"), (PC + 2, "+t"), RED)    # VIN  → ＋レール（5V）
 
-# LED（e3 と同じ 16・17列）：5番 → LED → 1kΩ → 下の −レール
+# LED（e2・e4 と同じ 16・17列）：5番 → LED → 1kΩ → 下の −レール
 wire(d, (8, "b"), (16, "b"), RED)
 led(d, 16, "b", note=False)
 resistor_v(d, 17, "a", "-b")
@@ -71,4 +71,4 @@ d.text((x0, 312), "VIN・OUT・GND の文字の", font=reg(17), fill=GRAY)
 d.text((x0, 336), "面を手前に向けてさす", font=reg(17), fill=GRAY)
 d.text((x0, 380), "白い丸はレンズ。", font=reg(17), fill=GRAY)
 d.text((x0, 404), "ピンの真上にかぶさる", font=reg(17), fill=GRAY)
-save(im, "e4_motion", "bb_pir.png")
+save(im, "e3_motion", "bb_pir.png")

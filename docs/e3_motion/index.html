@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-<title>④ 人感センサーで人を見つけよう — UIAPduino ワークショップ</title>
+<title>③ 人感センサーで人を見つけよう — UIAPduino ワークショップ</title>
 <link rel="stylesheet" href="../assets/deck.css">
 <link rel="stylesheet" href="../assets/site-theme.css">
 </head>
@@ -12,7 +12,7 @@
 
 <div class="toolbar">
   <a class="home" href="../index.html"><span class="ico">⌂</span>もくじ</a>
-  <span class="title">④ 人感センサーで人を見つけよう</span>
+  <span class="title">③ 人感センサーで人を見つけよう</span>
   <span class="spacer"></span>
   <button id="btn-present">▶ 発表モード</button>
   <button class="ghost" id="btn-print">印刷<span class="opt"> / PDF</span></button>
@@ -26,7 +26,7 @@
 <script type="text/markdown" id="deck-source">
 {cover}
 {qr: qr.svg}
-# ④ 人感センサーで人を見つけよう
+# ③ 人感センサーで人を見つけよう
 
 人が来たら知らせる
 
@@ -85,7 +85,7 @@
 1. ボードの **5V**→＋レール ／ **GND**→−レール
 2. **文字の面を手前**にして、f 行に立ててさす
 3. 左から **GND**→− ／ **OUT**→**7番** ／ **VIN**→＋
-4. LED は e3 と同じ（**5番**）
+4. LED は e2 と同じ（**5番**）
 
 > 基板の **VIN・OUT・GND** の文字を見て、まちがえないようにね。
 
@@ -109,7 +109,7 @@
 
 :::
 
-```cpp `e4_motion` 合図をそのまま LED に
+```cpp `e3_motion` 合図をそのまま LED に
 const int PIR = 7;   // 人感センサーの OUT
 const int LED = 5;
 
@@ -150,7 +150,7 @@ void loop() {
 
 :::
 
-```cpp `e4_motion` の loop() を書きかえる
+```cpp `e3_motion` の loop() を書きかえる
 void loop() {
   if (digitalRead(PIR) == HIGH) {
     digitalWrite(LED, HIGH);
@@ -172,7 +172,7 @@ void loop() {
 3. 来た人の**回数を数えて**、LED の点滅回数で知らせる（c1 の変数）
 4. 光センサー（e1）と組み合わせて、**暗いときだけ**光らせる
 
->| 💪 次の章のサーボと組み合わせると、
+>| 💪 ⑤のサーボと組み合わせると、
 > 「**人が来たら旗をふる**」しかけが作れるよ。
 </script>
 

@@ -1,18 +1,18 @@
 ---
-id: e3
+id: e4
 slug: distance
 section: 発展編
 emoji: 📏
-num: 3
-color: c3
-nav_title: ③ ものとの距離をはかろう
+num: 4
+color: c4
+nav_title: ④ ものとの距離をはかろう
 card_title: ものとの距離をはかろう
 desc: 超音波センサーで距離をはかろう。音がはね返る時間から距離がわかる。
 wip: 写真まち
 ---
 
 {cover}
-# ③ ものとの距離をはかろう
+# ④ ものとの距離をはかろう
 
 音のはね返りで距離をはかる
 
@@ -107,7 +107,7 @@ wip: 写真まち
 
 :::
 
-```cpp `e3_kyori` きょりをはかる
+```cpp `e4_kyori` きょりをはかる
 const int TRIG = 9;
 const int ECHO = 7;
 const int LED  = 5;
@@ -141,7 +141,7 @@ int kyori() {                    // きょりを cm ではかる
 
 :::
 
-```cpp `e3_kyori` につづけて書く
+```cpp `e4_kyori` につづけて書く
 void setup() {
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT);
@@ -176,7 +176,7 @@ void loop() {
 
 :::
 
-```cpp `e3_kyori` の loop() を書きかえる
+```cpp `e4_kyori` の loop() を書きかえる
 void loop() {
   digitalWrite(LED, kyori() < 20 ? HIGH : LOW);
   delay(100);

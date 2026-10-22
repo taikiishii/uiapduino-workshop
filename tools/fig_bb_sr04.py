@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""e3 超音波センサーの配線図（上から見た図）。
+"""e4 超音波センサーの配線図（上から見た図）。
 
 HC-SR04 は 45×20mm。**いちばん外の j行**にさすと、本体が盤面の外へ
 はみ出すので、f〜i行があいたまま残る。
@@ -68,5 +68,5 @@ for i, ln in enumerate(["本体は 45×20mm。", "いちばん外の j行 にさ
                         "盤面の外へ はみ出させる。", "ピンは左から",
                         "Gnd・Echo・Trig・Vcc。"]):
     center(d, W + 20 + (EXTRA_W - 46) / 2, 352 + i * 34, ln, reg(18), INK)
-save(im, "e3_distance", "bb_sr04.png")
+save(im, "e4_distance", "bb_sr04.png")
 print("  比 %.2f" % ((W + EXTRA_W) / (H + OFF_Y)))
