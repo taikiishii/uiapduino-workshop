@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""b2 タクトスイッチの中のつながり。
+"""b3 タクトスイッチの中のつながり。
    ここはまだ一般論の説明なので、ブレッドボードの行の名前は出さない。"""
 import sys
 sys.path.insert(0, "tools")
@@ -43,4 +43,4 @@ for x0, head, col, pressed, note in (
 
 d.rounded_rectangle([160, 412, 1080, 470], radius=12, fill=SOFT, outline=TEAL, width=3)
 middle(d, 620, 441, "つながっているのは 上の2本どうし・下の2本どうし", bold(25), DARKTEAL)
-save(im, "b2_switch", "switch_legs.png")
+save(im, "b3_switch", "switch_legs.png")

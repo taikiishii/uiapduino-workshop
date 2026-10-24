@@ -1,18 +1,18 @@
 ---
-id: b2
+id: b3
 slug: switch
 section: 基本編
 emoji: 🔘
-num: 2
-color: c2
-nav_title: ② スイッチでLEDをつけよう
+num: 3
+color: c3
+nav_title: ③ スイッチでLEDをつけよう
 card_title: スイッチでLEDをつけよう
 desc: ボタンを押したときだけLEDが光るようにしよう。デジタル入力の回。
 wip: 写真まち
 ---
 
 {cover}
-# ② スイッチでLEDをつけよう
+# ③ スイッチでLEDをつけよう
 
 押したときだけ光らせる
 
@@ -109,7 +109,7 @@ wip: 写真まち
 
 :::
 
-```cpp `b2_switch` スイッチでLEDをつける
+```cpp `b3_switch` スイッチでLEDをつける
 const int SW  = 3;
 const int LED = 5;
 

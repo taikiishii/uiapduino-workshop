@@ -1,17 +1,17 @@
 ---
-id: b3
+id: b2
 slug: pwm
 section: 基本編
 emoji: 🌗
-num: 3
-color: c3
-nav_title: ③ LEDの明るさを変えよう
+num: 2
+color: c2
+nav_title: ② LEDの明るさを変えよう
 card_title: LEDの明るさを変えよう
 desc: ついている・消えているだけでなく、とちゅうの明るさにしてみよう。
 ---
 
 {cover}
-# ③ LEDの明るさを変えよう
+# ② LEDの明るさを変えよう
 
 0 と 1 のあいだをつくる
 
@@ -125,7 +125,7 @@ analogWriteResolution(8);
 
 :::
 
-```cpp `b3_pwm` 明るさを3段階で変える
+```cpp `b2_pwm` 明るさを3段階で変える
 const int LED = 5;          // PWMが使えるピン
 
 void setup() {
