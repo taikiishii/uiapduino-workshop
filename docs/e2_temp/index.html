@@ -93,13 +93,16 @@
 2. **400** を引く（0℃のときの電圧）
 3. **19.5 でわる**と℃になる
 
-> `5000` はボードの動作電圧をミリボルトにした数。
-> 3.3V動作に変えている人は `3300` にしてね。
+> この計算を **`ondo()`** という関数にまとめて、次のページから使うよ。
+> `5000` はボードの動作電圧（ミリボルト）だよ。
 
 :::
 
-```cpp 温度をもとめる
-float ondo() {
+```cpp `e2_ondo` 温度をもとめる
+const int SENSOR = A2;
+const int LED    = 5;
+
+float ondo() {                   // 温度（℃）をかえす
   int v = analogRead(SENSOR);
   float mv = v * 5000.0 / 1024;  // ミリボルトに直す
   return (mv - 400) / 19.5;      // ℃ に直す
@@ -114,7 +117,7 @@ float ondo() {
 
 温度を**十の位**と**一の位**に分けて、点滅の回数で知らせるよ。
 
-1. 右のプログラムを書きこむ
+1. 右のプログラムを `ondo()` のあとに書く
 2. **長い点滅**の回数が十の位
 3. **短い点滅**の回数が一の位
 
@@ -123,10 +126,7 @@ float ondo() {
 
 :::
 
-```cpp `e2_ondo` 温度を点滅で読む
-const int SENSOR = A2;
-const int LED    = 5;
-
+```cpp `e2_ondo` につづけて書く
 void setup() {
   pinMode(LED, OUTPUT);
 }
@@ -139,9 +139,7 @@ void tenmetsu(int n, int ms) {   // n回、ms ミリ秒ずつ光る
 }
 
 void loop() {
-  int v = analogRead(SENSOR);
-  float mv = v * 5000.0 / 1024;
-  int t = (mv - 400) / 19.5;     // ℃（小数は切りすて）
+  int t = ondo();                // ℃（小数は切りすて）
   if (t < 0) t = 0;
   tenmetsu(t / 10, 700);         // 十の位：長く
   delay(800);
@@ -176,7 +174,7 @@ void loop() {
 
 温度がしきい値をこえたら、LEDで知らせるよ。
 
-1. 右のプログラムを書きこむ
+1. `loop()` の中を、右のように書きかえる
 2. センサーを手で握ってあたためる
 3. 28℃をこえるとLEDが光る
 
@@ -185,19 +183,9 @@ void loop() {
 
 :::
 
-```cpp `e2_temp` 28℃をこえたら光る
-const int SENSOR = A2;
-const int LED    = 5;
-
-void setup() {
-  pinMode(LED, OUTPUT);
-}
-
+```cpp `e2_ondo` の loop() を書きかえる
 void loop() {
-  int v = analogRead(SENSOR);
-  float mv = v * 5000.0 / 1024;
-  float t = (mv - 400) / 19.5;
-  digitalWrite(LED, t > 28 ? HIGH : LOW);
+  digitalWrite(LED, ondo() > 28 ? HIGH : LOW);
   delay(200);
 }
 ```
