@@ -8,7 +8,6 @@ color: c3
 nav_title: ③ スイッチでLEDをつけよう
 card_title: スイッチでLEDをつけよう
 desc: ボタンを押したときだけLEDが光るようにしよう。デジタル入力の回。
-wip: 写真まち
 ---
 
 {cover}
@@ -35,7 +34,7 @@ wip: 写真まち
 
 :::
 
-> 📷 スイッチを押してLEDが光っている写真
+![スイッチを押すと、LEDが光る](image/index/switch_photo.jpg)
 
 ---
 
