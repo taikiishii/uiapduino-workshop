@@ -1,42 +1,48 @@
 # -*- coding: utf-8 -*-
-"""e5 サーボの配線図。力の電気は はじめから電池から取る。
+"""e5 サーボの配線図。**力の電気は ボードとは別の電源から**。図は USB 給電で描く
+（本文は「電池でも別給電の USB でもよい」と書く。オーナー判断 2026-10-24）。
 
-電池は**下の ＋−レール**につなぎ、サーボはそのレールから電気をもらう。
-こうすると「電池 → レール → サーボ」の道すじが1本に見える。
-合図（黄）だけボードの5番から。GND は ボードもレールにつないで共通にする。
-サーボの3本は となりあう列（24・25・26）にいったん落としてから配る。
+実物の写真（content/e5_servo/image/index/servo_photo.jpg）に合わせた形：
+  ・ボードには、パソコンからの USB（左）。プログラムの書きこみと、ボードの電気
+  ・サーボの電気は、別の電源から下の ＋−レールへ入れる。図は写真どおり、もう1本の USB を
+    **USB-C の電源基板**にさした形。電池なら ＋ を下の ＋レール、− を下の −レールへ（2026-10-24）
+  ・サーボのコネクタから、ジャンパーワイヤーで**直接**つなぐ
+      緑（信号）→ 5番の列（8列・a行）／ 赤 → 下の ＋レール ／ 黒 → 下の −レール
+      （緑を b 行にすると、線がボードの下の行のピン 8・9 の上を通ってかくしてしまう）
+  ・ボードの GND（3列）も、同じ下の −レールへ（GND を共通にする）
+サーボの線の色は 茶＝GND・赤＝＋・橙＝信号。ジャンパーは写真どおり 黒・赤・緑。
 """
 import sys
 sys.path.insert(0, "tools")
 sys.stdout.reconfigure(encoding="utf-8")
 from bb import *
 
-RED, BROWN, ORANGE, BLACK = (214, 60, 50), (120, 80, 50), (240, 150, 40), (40, 44, 48)
-SC = 24                                    # サーボの3本を落とす列（茶・赤・黄）
+RED, BLACK, GREEN = (214, 60, 50), (40, 44, 48), (40, 150, 120)
 
-im, d = new("サーボをつなぐ（力の電気は電池から）", extra_w=460)
+im, d = new("サーボをつなぐ（力の電気は USB 電源から）", extra_w=460)
 board(d)
 mcu(d)
 
-sx, sy = 1290, 300
+wire(d, (3, "a"), (3, "-b"), BLACK)            # ボードの GND → 下の −レール
+
+# USB-C の電源基板（下のレールの 28列にさす）
+ux = cx(28)
+d.rounded_rectangle([ux - 26, cy("-b") - 26, ux + 26, cy("+b") + 22], radius=5,
+                    fill=(30, 130, 60), outline=(18, 90, 40), width=3)
+d.rounded_rectangle([ux - 18, cy("-b") - 60, ux + 18, cy("-b") - 22], radius=6,
+                    fill=(196, 200, 204), outline=(120, 124, 128), width=2)   # USB-C の口
+for r in ("-b", "+b"):
+    d.ellipse([ux - 8, cy(r) - 8, ux + 8, cy(r) + 8], fill=GOLD, outline=(180, 150, 40), width=2)
+d.line([ux, cy("-b") - 60, ux, cy("-b") - 100, W + 30, cy("-b") - 100],
+       fill=(225, 228, 230), width=12, joint="curve")                       # USB ケーブル
+d.text((W + 40, cy("-b") - 116), "USB 電源へ", font=bold(17), fill=INK)
+d.text((W + 40, cy("-b") - 92), "（充電器など）", font=reg(15), fill=GRAY)
+
+# サーボ（ボードの外）。コネクタから直接つなぐ
+sx, sy = 1290, 250
 brown, red, orange = servo(d, sx, sy)
-bp, bm = battery(d, 1330, 516)
+lead(d, brown[0],  brown[1],  (24, "-b"), BLACK)   # 茶 → 黒 → −レール
+lead(d, red[0],    red[1],    (25, "+b"), RED)     # 赤 → 赤 → ＋レール
+lead(d, orange[0], orange[1], (8, "a"), GREEN)     # 橙 → 緑 → 5番の列
 
-# 電池 → 下の ＋−レール
-lead(d, bp[0], bp[1], (27, "+b"), RED)
-lead(d, bm[0], bm[1], (30, "-b"), BLACK)
-
-# サーボの3本を となりあう列へ落とす
-lead(d, brown[0],  brown[1],  (SC,     "c"), BROWN)
-lead(d, red[0],    red[1],    (SC + 1, "c"), RED)
-lead(d, orange[0], orange[1], (SC + 2, "c"), ORANGE)
-
-# そこから レールと 5番ピンへ
-wire(d, (SC,     "a"), (SC,     "-b"), BLACK)   # 茶 → −レール
-wire(d, (SC + 1, "a"), (SC + 1, "+b"), RED)     # 赤 → ＋レール
-wire(d, (8, "b"), (SC + 2, "b"), ORANGE)        # 黄 → 5番ピン
-wire(d, (3, "a"), (3, "-b"), BLACK)             # ボードのGND → 同じ −レール
-
-center(d, 1435, 648, "電池は下のレールへ。サーボは", reg(17), GRAY)
-center(d, 1435, 672, "そのレールから電気をもらう", reg(17), GRAY)
 save(im, "e5_servo", "bb_servo.png")
