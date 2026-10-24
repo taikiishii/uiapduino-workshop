@@ -144,13 +144,14 @@ int kyori() {                    // きょりを cm ではかる
 
 :::
 
-`kyori()` が返すのは **cm**。**10 でわった 0〜10** の
-回数だけ光らせて、距離を数字で読むよ。
+距離を**メートル**と **10cm** に分けて、点滅の回数で知らせるよ。
 
 1. 右のプログラムを `kyori()` のあとに書く
-2. LEDの**点滅の回数 × 10** が距離（cm）
+2. **長い点滅**の回数が メートル
+3. **短い点滅**の回数が 10cm
 
-> **30cm** なら **3回**。定規で測って確かめよう。
+> **2m 35cm** なら、長く **2回**、短く **3回**。
+> かべや天井までの距離もはかれるよ（4m まで）。
 
 :::
 
@@ -161,17 +162,22 @@ void setup() {
   pinMode(LED, OUTPUT);
 }
 
-void loop() {
-  int n = kyori() / 10;
-  if (n > 10) n = 10;   // 反応なしのとき用
+void tenmetsu(int n, int ms) {   // n回、ms ミリ秒ずつ光る
   for (int i = 0; i < n; i++) {
-    digitalWrite(LED, HIGH); delay(200);
+    digitalWrite(LED, HIGH); delay(ms);
     digitalWrite(LED, LOW);  delay(300);
   }
-  delay(2000);
+}
+
+void loop() {
+  int cm = kyori();
+  if (cm > 400) cm = 0;          // 反応なしのときは光らない
+  tenmetsu(cm / 100, 700);       // メートル：長く
+  delay(800);
+  tenmetsu(cm % 100 / 10, 150);  // 10cm：短く
+  delay(3000);
 }
 ```
-
 ---
 
 # 近づいたら光らせよう
