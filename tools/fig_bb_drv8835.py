@@ -71,9 +71,7 @@ def draw(two):
         motor(d, 1420, 270); center(d, 1560, 270, "A", bold(22), INK)
         lead(d, 1354, 310, (DC + 1, "a"), (176, 180, 182))
         lead(d, 1380, 336, (DC + 2, "a"), (176, 180, 182))
-    bp, bm = battery(d, 1310, 540)
-    lead(d, bp[0], bp[1], (27, "+b"), RED)
-    lead(d, bm[0], bm[1], (30, "-b"), BLACK)
+    usb_power(d, 28)        # 力の電気は USB 電源から（写真どおり。本文は電池でもよいと書く）
     save(im, "e6_motor", "bb_2motor.png" if two else "bb_drv8835.png")
 
 draw(False)

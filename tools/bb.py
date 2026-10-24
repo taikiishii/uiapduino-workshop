@@ -343,6 +343,23 @@ def motor(d, x, y, r=76):
     d.ellipse([x - 26, y - 26, x + 26, y + 26], fill=(90, 94, 98))
     center(d, x, y + r + 12, "モーター", bold(19), INK)
 
+def usb_power(d, col, note=("USB 電源へ", "（充電器など）")):
+    """USB-C の電源基板。下の −レール・＋レールの col 列にさす（緑の小さな基板）。
+    上に USB-C の口があり、ケーブルは右へのびる。サーボ・モーターの力の電気用。"""
+    ux = cx(col)
+    d.rounded_rectangle([ux - 26, cy("-b") - 26, ux + 26, cy("+b") + 22], radius=5,
+                        fill=(30, 130, 60), outline=(18, 90, 40), width=3)
+    d.rounded_rectangle([ux - 18, cy("-b") - 60, ux + 18, cy("-b") - 22], radius=6,
+                        fill=(196, 200, 204), outline=(120, 124, 128), width=2)   # USB-C の口
+    for r in ("-b", "+b"):
+        d.ellipse([ux - 8, cy(r) - 8, ux + 8, cy(r) + 8], fill=GOLD,
+                  outline=(180, 150, 40), width=2)
+    d.line([ux, cy("-b") - 60, ux, cy("-b") - 100, W + 30, cy("-b") - 100],
+           fill=(225, 228, 230), width=12, joint="curve")                       # USB ケーブル
+    if note:
+        d.text((W + 40, cy("-b") - 116), note[0], font=bold(17), fill=INK)
+        d.text((W + 40, cy("-b") - 92), note[1], font=reg(15), fill=GRAY)
+
 def battery(d, x, y, w=210, h=110):
     d.rounded_rectangle([x, y, x + w, y + h], radius=8, fill=(232, 120, 40),
                         outline=(180, 88, 24), width=3)

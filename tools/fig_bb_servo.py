@@ -25,18 +25,7 @@ mcu(d)
 
 wire(d, (3, "a"), (3, "-b"), BLACK)            # ボードの GND → 下の −レール
 
-# USB-C の電源基板（下のレールの 28列にさす）
-ux = cx(28)
-d.rounded_rectangle([ux - 26, cy("-b") - 26, ux + 26, cy("+b") + 22], radius=5,
-                    fill=(30, 130, 60), outline=(18, 90, 40), width=3)
-d.rounded_rectangle([ux - 18, cy("-b") - 60, ux + 18, cy("-b") - 22], radius=6,
-                    fill=(196, 200, 204), outline=(120, 124, 128), width=2)   # USB-C の口
-for r in ("-b", "+b"):
-    d.ellipse([ux - 8, cy(r) - 8, ux + 8, cy(r) + 8], fill=GOLD, outline=(180, 150, 40), width=2)
-d.line([ux, cy("-b") - 60, ux, cy("-b") - 100, W + 30, cy("-b") - 100],
-       fill=(225, 228, 230), width=12, joint="curve")                       # USB ケーブル
-d.text((W + 40, cy("-b") - 116), "USB 電源へ", font=bold(17), fill=INK)
-d.text((W + 40, cy("-b") - 92), "（充電器など）", font=reg(15), fill=GRAY)
+usb_power(d, 28)                               # USB-C の電源基板（下のレールの 28列）
 
 # サーボ（ボードの外）。コネクタから直接つなぐ
 sx, sy = 1290, 250
