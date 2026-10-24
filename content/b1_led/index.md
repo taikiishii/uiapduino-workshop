@@ -8,7 +8,6 @@ color: c1
 nav_title: ① ブレッドボードにLEDをつなごう
 card_title: ブレッドボードにLEDをつなごう
 desc: ブレッドボードのしくみをおぼえて、自分でつないだLEDを光らせよう。
-wip: 写真まち
 ---
 
 {cover}
@@ -35,7 +34,7 @@ wip: 写真まち
 
 :::
 
-> 📷 ブレッドボードにLEDをつないで光らせた写真
+![ブレッドボードにLEDをつないで光らせたところ](image/index/led_photo.jpg)
 
 ---
 
