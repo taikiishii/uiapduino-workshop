@@ -171,8 +171,9 @@ def resistor_v(d, col, row_a, row_b, label="1kΩ",
         d.text((x + 20, my - 10), label, font=bold(15), fill=(120, 100, 70))
 
 def tact(d, col_a, col_b):
-    """大型タクトスイッチ。端子は d行 と g行。
-    同じ行の端子どうしは いつもつながっていて、押すと d と g がつながる。"""
+    """大型タクトスイッチ。端子は d行 と g行（溝をまたいでさす）。
+    **同じ列の端子どうし（col_a の上下・col_b の上下）は いつもつながっていて、
+    押すと col_a と col_b がつながる**（2026-11-14 実物で確認。前は行どうしと書いていた）。"""
     x1, x2 = cx(col_a), cx(col_b)
     yg, yd = cy("g"), cy("d")
     d.rounded_rectangle([x1 - 26, yg - 26, x2 + 26, yd + 26], radius=8,
@@ -186,8 +187,10 @@ def tact(d, col_a, col_b):
         for y in (yg, yd):
             d.ellipse([x - 10, y - 10, x + 10, y + 10], fill=GOLD,
                       outline=(180, 150, 40), width=2)
-    center(d, mx, yg - 62, "g行どうしは いつもつながっている", bold(15), (120, 128, 132))
-    center(d, mx, yd + 40, "d行どうしも いつもつながっている", bold(15), (120, 128, 132))
+    center(d, mx, yg - 62, "%d列どうし・%d列どうしは いつもつながっている" % (col_a, col_b),
+           bold(15), (120, 128, 132))
+    center(d, mx, yd + 40, "押すと %d列 と %d列 がつながる" % (col_a, col_b),
+           bold(15), (120, 128, 132))
 
 def vr(d, col, row):
     """可変抵抗（つまみ）。上から見ると正方形で、3行ぶんの大きさ。
