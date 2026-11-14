@@ -8,7 +8,6 @@ color: c5
 nav_title: ⑤ ライブラリを追加しよう
 card_title: ライブラリを追加しよう
 desc: ライブラリの入れかたと、入らない・動かないときの考え方。拡張編と自由制作で使う。
-wip: 写真まち
 ---
 
 {cover}
@@ -63,7 +62,7 @@ Arduino IDE の**ライブラリマネージャ**から入れるよ。
 
 :::
 
-> 📷 ライブラリマネージャで検索している画面
+![部品の名前で検索して「インストール」（例：LCD の LiquidCrystal_I2C）](image/index/lib_manager_search.png)
 
 ---
 
