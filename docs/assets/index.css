@@ -40,6 +40,8 @@ header h1{ margin:0 0 10px; font-size:32px; letter-spacing:.02em; }
 header h1 .logo{ height:1.55em; width:auto; vertical-align:middle;
                  margin:0 .18em .12em 0; }
 header p{ margin:0; opacity:.92; font-size:15px; }
+/* 見出しの下の1行（content/_index/header.html）。リンクも白のまま */
+header p a{ color:inherit; }
 header::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
   background:var(--rainbow);
