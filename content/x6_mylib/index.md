@@ -8,7 +8,6 @@ color: c6
 nav_title: ⑥ ライブラリを作ろう
 card_title: ライブラリを作ろう
 desc: 自分でライブラリを作って、LCD をメモリ半分で動かそう。中身まで知りたい人へ。
-wip: 写真まち
 ---
 
 {cover}
@@ -46,7 +45,7 @@ LCD をもっと軽く動かす
 
 :::
 
-> 📷 新しいタブで LcdMini.h を作った画面
+![「新しいタブ」で、ファイルの名前に LcdMini.h と入れる](image/index/new_tab.png)
 
 ---
 
