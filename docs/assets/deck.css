@@ -117,6 +117,24 @@ body { background: var(--page-bg); }
 }
 .deck-hint { text-align: center; color: var(--muted); font-size: 13px; margin: 0 0 22px; }
 
+/* ページの一番下：つぎの資料へ（build.py の next_link_html が作る） */
+.next-chapter { max-width: 1000px; margin: -24px auto 64px; padding: 0 16px; display: flex; justify-content: flex-end; }
+.next-chapter a {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: #fff; color: var(--accent-dark); text-decoration: none;
+  border: 2px solid var(--accent); border-radius: 16px; padding: 12px 14px 12px 22px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+.next-chapter a:hover { filter: brightness(1.03); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+.next-chapter .nc-text { display: flex; flex-direction: column; gap: 2px; }
+.next-chapter .nc-label { font-size: 13px; color: var(--muted); }
+.next-chapter .nc-title { font-size: 18px; font-weight: 700; }
+.next-chapter .nc-arrow {
+  width: 40px; height: 40px; border-radius: 50%; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; font-size: 22px; font-weight: 700;
+}
+
 /* ---- スライド1枚（すべてのモード共通の器） ------------------------------ */
 .slide {
   position: relative;
@@ -404,6 +422,7 @@ body.mode-present { background: #0d1416; overflow: hidden; }
 body.mode-present .toolbar { display: none; }
 body.mode-present .deck { max-width: none; margin: 0; padding: 0; }
 body.mode-present .deck-hint { display: none; }
+body.mode-present .next-chapter { display: none; }
 body.mode-present .slide {
   display: none;
   position: fixed; top: 50%; left: 50%;
@@ -437,7 +456,7 @@ body.mode-present .present-bar { display: flex; }
 @media print {
   @page { size: A4 landscape; margin: 8mm; }
   html, body { background: #fff; }
-  .toolbar, .present-bar, .deck-hint { display: none !important; }
+  .toolbar, .present-bar, .deck-hint, .next-chapter { display: none !important; }
   .deck { max-width: none; margin: 0; padding: 0; }
   .slide {
     display: block !important;
